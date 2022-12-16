@@ -3,5 +3,5 @@ This is going to be an online boardgame
 
 Ideas:
     
-    1vs1 aréna quízz game
+    1vs1 arena quizz game
     
