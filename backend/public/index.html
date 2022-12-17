@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
+    <script src="main.js" defer></script>
+    <title>Project-Neutron</title>
+</head>
+<body>
+    <div id="loginPage-cont">
+        <div id="login-block">
+            <div class="designe-cont">
+                <h1>Project-Neutron</h1>
+                <form action="/login" method="POST">
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="submit" value="Login">
+                </form>
+                <div class="changDP" onclick="changeRegLog(true)">I don't have an account</div>
+            </div>
+        </div>
+        <div id="register-block">
+            <div class="designe-cont">
+                <h1>Project-Neutron</h1>
+                <form action="/register" method="POST">
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="text" name="email" placeholder="Email">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password2" placeholder="Repeat Password">
+                    <input type="submit" value="Register">
+                </form>
+                <div class="changDP" onclick="changeRegLog(false)">I already have an account</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

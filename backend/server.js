@@ -13,14 +13,19 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.get('/', (req, res) => {   
-   res.sendFile(__dirname + '/public/index.html');
+app.get('/', (req, res) => {  
+    if (session.user){
+        res.sendFile(__dirname + '/public/lobby.html');
+    }else{ 
+        res.sendFile(__dirname + '/public/index.html');
+    }
 });
 
 app.post('/login', (req, res) => {
     functions.login(req.body);
     if (functions.login(req.body)){
-
+        session.user = req.body.username;
+        res.redirect('/')
     }else{
         res.redirect('/?status=Hibás felhasználónév vagy jelszó');
     }

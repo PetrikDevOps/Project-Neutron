@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <script src="main.js" defer></script>
+    <title>Project-Neutron</title>
+</head>
+<body>
+    <nav id="lobby-nav">
+        <ul>
+            <li onclick="changeLobbyDisplay('fast')">Gyors-Játék</li>
+            <li onclick="changeLobbyDisplay('create')">Játék a barátokkal</li>
+            <li onclick="changeLobbyDisplay('pf')">Profil</li>
+        </ul>
+    </nav>
+    <main id="lobby-main">
+        <div id="bg-main"></div>
+        <div id="fast-game">
+            <h1>Fast-Game</h1>
+            <p>Play a game with random people</p>
+            <button>Play</button>
+        </div>
+        <div id="lobby-game">
+            <h1>Lobby-Game</h1>
+            <p>Play a game with your friends</p>
+            <p>To create a lobby</p>
+            <div>
+                <button id="button-margin-fix">Lobby készitése</button>
+                <button>Csatlakozás</button></div>
+            </div>
+        <div id="profile">
+            <h1>Profil</h1>
+            <p>Here you can see your profil</p>
+            <p>Level: </p>
+            <p>Wins: </p>
+            <p>Losses: </p>
+            <p>Friends: </p>
+        </div>
+    </main>
+</body>
+</html>
