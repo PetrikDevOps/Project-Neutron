@@ -246,4 +246,8 @@
 #main-display {
   width: 100vw;
   height: 100vh;
+}
+
+#test {
+  display: none;
 }/*# sourceMappingURL=style.css.map */

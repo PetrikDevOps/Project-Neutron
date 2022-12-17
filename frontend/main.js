@@ -35,11 +35,9 @@ let genMap = () => {
     for (let i = 0; i < 18; i++) {
         for (let j = 0; j < 10; j++) {
             let canvas = document.getElementById('main-display')
-            let test = document.getElementById('test')
             let ctx = canvas.getContext('2d')
-            test.style.color = 'rgb(' + Math.floor(Math.random()*255) + ', ' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255)+ ')'
-            ctx.fillStyle = test.style.color
-            ctx.fillRect(i * 100, j * 100, 100, 100)
+            let img = document.getElementById("test");
+            ctx.drawImage(img, 10, 10);
         }
     }
 }
