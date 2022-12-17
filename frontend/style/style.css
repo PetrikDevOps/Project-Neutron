@@ -131,7 +131,7 @@
   border: none;
   border-radius: 10px;
   box-shadow: 0px 0px 5px 5px rgba(34, 222, 44, 0.408);
-  transition: 0.5s;
+  transition: 0.2s;
 }
 #lobby-main #fast-game button:hover {
   box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.708);
@@ -170,7 +170,7 @@
   border: none;
   border-radius: 10px;
   box-shadow: 0px 0px 5px 5px rgba(34, 222, 44, 0.408);
-  transition: 0.5s;
+  transition: 0.2s;
 }
 #lobby-main #lobby-game button:hover {
   box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.708);
@@ -191,7 +191,7 @@
   justify-items: center;
   transition: 0.5s;
 }
-#lobby-main #profile h1, #lobby-main #profile p, #lobby-main #profile button {
+#lobby-main #profile h1, #lobby-main #profile p {
   transition: 0.5s;
 }
 #lobby-main #profile h1 {
@@ -200,7 +200,7 @@
 #lobby-main #profile:hover {
   background-color: rgba(0, 0, 0, 0.85);
 }
-#lobby-main #profile:hover h1, #lobby-main #profile:hover p, #lobby-main #profile:hover button {
+#lobby-main #profile:hover h1, #lobby-main #profile:hover p {
   color: rgb(240, 255, 255);
 }
 #lobby-main #bg-main {
