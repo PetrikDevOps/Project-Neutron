@@ -17,32 +17,47 @@ Játék menete:
 Egy kör menete:
 
     - Elsőnek el kell döntened mi a stratégiád ezek a következők lehetnek:
-        a, Kotyvasztás
+        a, Tanulás
         b, Gyógyítás
         c, Támadás
+        d, Védekezés
     - Ezek után válaszolnod kell egy kérdésre, ha sikeres a válaszadás a fent választott akció kijátszásra kerül, ha nem sikerült eltalálni a  helyes választ, akkor sajnos ez az akció nem fog kijátszódni.
 
 Játékos tulajdonságai:
 
     - HP (Élet)
-    - XP (Tapasztalat pont)
+    - SP (Segitség pont)
     - AD (Támadási sebzés)
 
 HP:
 
     - A HP maximális száma: 7
     - A HP kezdőértéke: 0
+    - +1 HP jár minden sikeres "Gyógyitásért"
     - Ez határozza meg egy játékos életerejét
 
-XP:
+SP:
 
-    - Az XP maximális száma: 3
-    - Az XP kezdőértéke: 0
-    - Ez határozza meg, hogy hány felhasználható segítségkérésed van 
+    - Az SP maximális száma: 3
+    - Az SP kezdőértéke: 0
+    - +1 SP jár minden sikeres "Tanulásért"
+    - Ez határozza meg, hogy hány felhasználható segítségkérésed van
+    - Minden egyes feladat könnyités 1 SP-be kerül
 
 AD:
 
-    -Az AD értéke: 1
+    - Az AD értéke: 2
+
+Feladat Segitség:
+
+    - Minden kérdésnél oldalt megjelenik egy könyv mely abban segitséget nyujt -1 SP-ért
+    - Ha számot kell meg akkor egy ugyan olyan nagyságu de számjegyeiben eltérő számot fog beírni,
+        (pl.: a helyes válasz a 111 akkor 100-999 között fog egy random számot megadni viszont 99 és 1000 azaz más nagyságú számot bíztos nem add!)
+    - Ha 4ből kell a jó választ kiválasztani 2 át satíroz ami nem jó
+
+Védekezés:
+
+    - A "Védekezés" a játék legnehezebb mechanikája ha sikeresen kijátszod vissza ütöd az ellenség támadását ami azt jelenti te nem fogsz sebzést elszenvedni, viszont ő a támadásának a felét el fogja szenvedni azza 1-el csökken a HP-ja
 
 Gyors Játék:
 
