@@ -1,6 +1,6 @@
 # Project-Neutron
 
-This is going to be an online boardgame
+Ez egy online Társas Játék
 
 Ötlet:
 
