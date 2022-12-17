@@ -37,6 +37,11 @@ app.post('/register', (req, res) => {
     res.redirect('/?status=sikeres regisztráció');
 });
 
+app.post('/logout', (req, res) => {
+    session.user = null;
+    res.redirect('/');
+});
+
 app.listen(port, () => {
    console.log(`Backend server is running on port ${port}`);
 });
