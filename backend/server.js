@@ -6,6 +6,8 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const router = express.Router();
+const functions = require('./mainfunctions');
+const session = require('express-session');
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
@@ -16,10 +18,19 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-    console.log(req.body);
-    res.send('Login');
+    functions.login(req.body);
+    if (functions.login(req.body)){
+
+    }else{
+        res.redirect('/?status=Hibás felhasználónév vagy jelszó');
+    }
 });
 
+app.post('/register', (req, res) => {
+    console.log(req.body);
+    functions.register(req.body);
+    res.redirect('/?status=sikeres regisztráció');
+});
 
 app.listen(port, () => {
    console.log(`Backend server is running on port ${port}`);
