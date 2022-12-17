@@ -42,6 +42,11 @@ app.post('/logout', (req, res) => {
     res.redirect('/');
 });
 
+app.get('/css',(req, res) => {
+    res.sendFile(__dirname + '/public/style/style.css');
+});
+
+
 app.listen(port, () => {
    console.log(`Backend server is running on port ${port}`);
 });
