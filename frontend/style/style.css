@@ -241,4 +241,9 @@
 
 #button-margin-fix {
   margin-right: 2vh;
+}
+
+#main-display {
+  width: 100vw;
+  height: 100vh;
 }/*# sourceMappingURL=style.css.map */
