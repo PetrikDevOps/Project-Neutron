@@ -1,0 +1,68 @@
+//reginon universal
+//Clearing all the margins and padding
+*{
+    margin: 0;
+    padding: 0;
+    font-size: larger;
+    color: rgba(250, 235, 215, 0.425);
+}
+//regionend
+
+//region Login
+@mixin display-block() {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(96, 96, 96);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .designe-cont{
+        padding: 10vh 3vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.363);
+        
+        .changDP{
+            color: rgb(44, 188, 44);
+            font-size: 0.7em;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            margin: 3vh;
+            justify-content: center;
+    
+            input{
+                margin-top: 1vh;
+                background-color: rgba(0, 0, 0, 0.363);
+                border: none;
+                box-shadow: -10px 0px 5px 0px rgba(34, 222, 44, 0.408);
+                transition: 0.5s;
+                border-radius: 5px;
+            }
+            input:hover{
+                box-shadow: -12px 0px 5px 2px rgba(34, 222, 44, 0.408);
+            }
+
+            input[type="submit"]{
+                margin-top: 5vh;
+                cursor: pointer;
+            }
+        }
+    }
+  }
+
+#register-block{
+    @include display-block();
+    display: none;
+}
+
+#login-block{
+    @include display-block();
+    display: flex;
+}
