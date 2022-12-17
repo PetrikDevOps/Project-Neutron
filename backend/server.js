@@ -21,9 +21,9 @@ app.get('/', (req, res) => {
     }
 });
 
-app.post('/login', (req, res) => {
-    functions.login(req.body);
-    if (functions.login(req.body)){
+app.post('/login', async(req, res) => {
+    state = await functions.login(req.body);
+    if (state===true){
         session.user = req.body.username;
         res.redirect('/')
     }else{
