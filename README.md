@@ -10,35 +10,35 @@ This is going to be an online boardgame
 
 Játék menete:
 
-    - Játék körökből áll. (Erről többet olvashatsz az "Egy kör menete" alatt)
-    - A játék addig tart mig valakinek el nem fogy az élete, vagy fel nem adja a játékot
-    - A győztes játékos KORONGOT kap,
+    - Játék körökből áll. (Erről többet olvashatsz az "Egy kör menete" alatt).
+    - A játék addig tart amig valakinek el nem fogy az élete, vagy fel nem adja a játékot.
+    - A győztes játékos KORONGOT kap.
 
 Egy kör menete:
 
-    - Elsőnek el kell döntened mi a stratégiéd ez a következők lehetnek:
-        a, Kotyvasztés
-        b, Gyogyitás
+    - Elsőnek el kell döntened mi a stratégiád ezek a következők lehetnek:
+        a, Kotyvasztás
+        b, Gyógyítás
         c, Támadás
-    - Ezek után válaszolnod kell egy kérdésre, ha sikeres a válasz adás a fent választott akció kijátszásra kerül, ha nemsikerült helyest választ addni akkor sajnos ez az akció nem fog kijátszodni.
+    - Ezek után válaszolnod kell egy kérdésre, ha sikeres a válaszadás a fent választott akció kijátszásra kerül, ha nem sikerült eltalálni a  helyes választ, akkor sajnos ez az akció nem fog kijátszódni.
 
 Játékos tulajdonságai:
 
-        - HP (Élet)
-        - XP (Tapasztalat pont)
-        - AD (Kézi erő)
+    - HP (Élet)
+    - XP (Tapasztalat pont)
+    - AD (Támadási sebzés)
 
 HP:
 
     - A HP maximális száma: 7
-    - A HP kezdő értéke: 0
-    - Ez határozza meg egy játékos élet erejét
+    - A HP kezdőértéke: 0
+    - Ez határozza meg egy játékos életerejét
 
 XP:
 
     - Az XP maximális száma: 3
-    - Az XP kezdő értéke: 0
-    - Ez határozza
+    - Az XP kezdőértéke: 0
+    - Ez határozza meg, hogy hány felhasználható segítségkérésed van 
 
 AD:
 
@@ -55,9 +55,9 @@ Játék a Barátokkal (Lobby Készitése):
 
 Játék a Barátokkal (Csatlakozás):
 
-    - Barátodtól kapott KÓD-ot kell megadnód.
+    - Barátodtól kapott KÓD-ot kell megadnod.
 
 KORONG:
 
-    - Ez a játék fizető eszköze, melyel feloldhatod a kinézeteket.
+    - Ez a játék fizetőeszköze, melyel feloldhatod a kinézeteket.
     - Ezeket győzelmekkel szerzed.
