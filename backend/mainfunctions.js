@@ -1,6 +1,6 @@
 const argon = require('argon2');
 const db = require('./db');
-
+const session = require('express-session');
 
 async function register(incom) {
     let crypetdPassword = await argon.hash(incom.password);
@@ -21,6 +21,7 @@ async function login(incom) {
     }
     for(let i = 0;i<result.length;i++){
         if(await argon.verify(result[i].pwhash, pass)){
+            session.id = result[i].id;
             return true;
         }else{
             return false;
