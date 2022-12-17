@@ -91,4 +91,30 @@
 #login-block .designe-cont form input[type=submit] {
   margin-top: 5vh;
   cursor: pointer;
+}
+
+#lobby-main {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+}
+
+#lobby-nav {
+  position: absolute;
+  background-color: none;
+  right: 5%;
+  top: 30%;
+}
+#lobby-nav ul {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+#lobby-nav ul li {
+  margin-bottom: 2vh;
+  text-align: right;
+  list-style: none;
+  margin: 1vh;
+  font-size: 1.5em;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
