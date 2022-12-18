@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css">
-    <script src="main.js" defer></script>
+    <script src="./js" defer></script>
     <title>Project-Neutron</title>
 </head>
 <body>
@@ -29,8 +29,15 @@
             <p>Play a game with your friends</p>
             <p>To create a lobby</p>
             <div>
-                <form action="lobbyGen" method="post"><input type="submit" value="LobbyGEN"></form>
-                <form action="join" method="post"><input type="submit" value="join"></form>
+                <form action="newLobby" method="post">
+                    <input type="checkbox" name="priv" id="priv">
+                    <label for="priv">Privét</label>
+                    <input type="submit" value="Lobby Létrehozása">
+                </form>
+                <form action="join" method="post">
+                    <input type="text" name="roomKey" id="roomKey" maxlength="5">
+                    <input type="submit" value="join">
+                </form>
             </div>
         </div>
         <div id="profile">

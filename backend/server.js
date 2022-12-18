@@ -58,6 +58,21 @@ app.get('/game', async(req, res) => {
         res.redirect('/');
     }
 });
+
+    //\
+   // \\
+  //   \\
+ //     \\
+//  file \\
+
+app.get('/css',(req, res) => {
+    res.sendFile(__dirname + '/public/style/style.css');
+});
+
+app.get('/js',(req, res) => {
+    res.sendFile(__dirname + '/public/main.js');
+});
+
     //\
    // \\
   //   \\
@@ -91,25 +106,6 @@ app.get('/roomList', async (req, res) => {
     }
 });
 
-    //\
-   // \\
-  //   \\
- //     \\
-// fileok\\
-
-app.get('/css',(req, res) => {
-    res.sendFile(__dirname + '/public/style/style.css');
-});
-
-app.get('/js',(req, res) => {
-    res.sendFile(__dirname + '/public/main.js');
-});
-
-     //\
-    // \\
-   //   \\
-  //     \\
- //       \\
 // Indítás \\
 
 app.listen(port, () => {
