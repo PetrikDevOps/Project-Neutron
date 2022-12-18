@@ -9,6 +9,7 @@ const router = express.Router();
 const functions = require('./mainfunctions');
 const session = require('express-session');
 
+
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
