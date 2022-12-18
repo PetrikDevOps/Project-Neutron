@@ -1,74 +1,12 @@
 {"questions":[
-{"question":"Melyik irodalmi mű a következő: 'A három testőr'?",
-"answers":[
-{"answer":"Alexandre Dumas","correct":true},
-{"answer":"Charles Dickens","correct":false},
-{"answer":"Jules Verne","correct":false},
-{"answer":"William Shakespeare","correct":false}
-]},
-{"question":"Melyik zenekar a következő: 'The Beatles'?",
-"answers":[
-{"answer":"Metallica","correct":false},
-{"answer":"Pink Floyd","correct":false},
-{"answer":"The Rolling Stones","correct":false},
-{"answer":"Led Zeppelin","correct":false}
-]},
-{"question":"Melyik film a következő: 'A Karib-tenger kalózai'?",
-"answers":[
-{"answer":"A Titanic","correct":false},
-{"answer":"A Harry Potter és a Bölcsek Köve","correct":false},
-{"answer":"A Király beszéde","correct":false},
-{"answer":"A Titanic 2.","correct":false}
-]},
-{"question":"Melyik sportesemény a következő: 'a golf világbajnokság'?",
-"answers":[
-{"answer":"a FIFA Világbajnokság","correct":false},
-{"answer":"az öttusa világbajnokság","correct":false},
-{"answer":"a Forma-1 világbajnokság","correct":false},
-{"answer":"a tenisz világbajnokság","correct":false}
-]},
-{"question":"Melyik műsor a következő: 'A Jóbarátok'?",
-"answers":[
-{"answer":"az X-Faktor","correct":false},
-{"answer":"a Született feleségek","correct":false},
-{"answer":"a The Voice","correct":false},
-{"answer":"a Született gyilkosok","correct":false}
-]},
-{"question":"Melyik étel a következő: 'a szushi'?",
-"answers":[
-{"answer":"a tacos","correct":false},
-{"answer":"a lasagna","correct":false},
-{"answer":"a curry","correct":false},
-{"answer":"a pad thai","correct":false}
-]},
-{"question":"Melyik turisztikai helyszín a következő: 'a Taj Mahal'?",
-"answers":[
-{"answer":"a Big Ben","correct":false},
-{"answer":"a Torony","correct":false},
-{"answer":"az Eiffel-torony","correct":false},
-{"answer":"a Sziklák Katedrálisa","correct":false}
-]},
-{"question":"Melyik művészeti mozgalom a következő: 'a kubizmus'?",
-"answers":[
-{"answer":"a futurizmus","correct":false},
-{"answer":"az impresszionizmus","correct":false},
-{"answer":"a szürrealizmus","correct":false},
-{"answer":"a postmodernizmus","correct":false}
-]},
 {"question":"Melyik következő kifejezés nem egy adatbázis-kezelő rendszer neve?",
 "answers":[
 {"answer":"MySQL","correct":false},
-{"answer":"Excel","correct":true},
-{"answer":"Oracle","correct":false},
+{"answer":"Excel","correct":false},
+{"answer":"Oracle","correct":true},
 {"answer":"Microsoft Access","correct":false}
 ]},
-{"question":"Melyik következő operációs rendszer nem számítógépeken fut?",
-"answers":[
-{"answer":"Windows","correct":false},
-{"answer":"iOS","correct":false},
-{"answer":"Android","correct":true},
-{"answer":"Linux","correct":false}
-]},
+
 {"question":"Melyik következő kifejezés nem egy programozási nyelv neve?",
 "answers":[
 {"answer":"Java","correct":false},
@@ -76,212 +14,239 @@
 {"answer":"Python","correct":false},
 {"answer":"Word","correct":true}
 ]},
-{"question":"Melyik következő eszköz nem egy adatbeviteli eszköz?",
-"answers":[
-{"answer":"Billentyűzet","correct":false},
-{"answer":"Egér","correct":false},
-{"answer":"Mikrofon","correct":true},
-{"answer":"Scanner","correct":false}
-]},
-{"question":"Melyik következő kifejezés nem egy számítógépes hálózat típusa?",
-"answers":[
-{"answer":"LAN","correct":false},
-{"answer":"WAN","correct":false},
-{"answer":"VPN","correct":false},
-{"answer":"TV","correct":true}
-]},
-{"question":"Melyik következő elem a legnehezebb?",
-"answers":[
-{"answer":"a tungsten","correct":false},
-{"answer":"az osmium","correct":true},
-{"answer":"a platinium","correct":false},
-{"answer":"az irídium","correct":false}
-]},
-{"question":"Melyik következő állítás nem igaz a molekulákra?",
-"answers":[
-{"answer":"A molekulák két vagy több atommal állnak össze.","correct":false},
-{"answer":"A molekulák képesek reakcióba lépni egymással.","correct":false},
-{"answer":"A molekulák összetételétől függően különböző fizikai és kémiai tulajdonságokkal rendelkeznek.","correct":false},
-{"answer":"A molekulák legtöbbje állatokból és növényekből származik.","correct":true}
-]},
 
-{"question":"Melyik következő állítás nem igaz a kémiai reakciókról?",
-"answers":[
-{"answer":"A kémiai reakciók során új anyagok keletkeznek.","correct":false},
-{"answer":"A kémiai reakciók során a reakciós anyagok összetétele megváltozik.","correct":false},
-{"answer":"A kémiai reakciók során a reakciós anyagok mennyisége megváltozik.","correct":false},
-{"answer":"A kémiai reakciók során a reakciós anyagok formája megváltozik.","correct":true}
-]},
 
-{"question":"Melyik következő elem nem része a hidrogén-oxigén összetételű víznek (H2O)?",
-"answers":[
-{"answer":"Oxigén","correct":false},
-{"answer":"Szén","correct":true},
-{"answer":"Hidrogén","correct":false},
-{"answer":"Nitrogén","correct":false}
-]},
-{"question":"Melyik következő állítás nem igaz az elektrolízisről?",
-"answers":[
-{"answer":"Az elektrolízis során a vezető anyagot áram által szétválasztják.","correct":false},
-{"answer":"Az elektrolízis során a vezető anyagot kémiai reakció által szétválasztják.","correct":true},
-{"answer":"Az elektrolízis során a vezető anyagot hőmérséklet-változás által szétválasztják.","correct":false}
-]},
 
-{"question":"Melyik következő csillagjegy a legérzékenyebb?",
-"answers":[
-{"answer":"Bika","correct":false},
-{"answer":"Skorpió","correct":false},
-{"answer":"Nyilas","correct":false},
-{"answer":"Halak","correct":true}
-]},
-
-{"question":"Melyik következő állítás nem igaz az asztrológiáról?",
-"answers":[
-{"answer":"Az asztrológia egy ősi tudomány, mely az égitestek állásának, mozgásának és hatásainak elemzésével foglalkozik.","correct":false},
-{"answer":"Az asztrológia az emberek személyiségének és jövőjének megismerésére használja az égitestek állását és mozgását.","correct":false},
-{"answer":"Az asztrológia az égitestek állását és mozgását használja a védekezésre és a gyógyításra.","correct":false},
-{"answer":"Az asztrológia a modern tudományok által elismert tudományág.","correct":true}
-]},
-
-{"question":"Melyik következő állítás nem igaz a táplálkozásról?",
-"answers":[
-{"answer":"A táplálkozás során a szervezetünk számára szükséges tápanyagokat és energiát vesszük magunkhoz.","correct":false},
-{"answer":"A táplálkozás során fontos, hogy megfelelő mennyiségű fehérjét, szénhidrátot, zsírt és vitaminokat fogyasszunk.","correct":false},
-{"answer":"A táplálkozás során a megfelelő folyadékbevitel is fontos, hogy szervezetünk megfelelően működjön.","correct":false},
-{"answer":"A táplálkozás során elég ha csak a kedvenc ételeinket fogyasztjuk, más tápanyagokat nem szükséges bevinni.","correct":true}
-]},
-{"question":"Melyik következő állítás nem igaz a környezetvédelemről?",
-"answers":[
-{"answer":"A környezetvédelem az emberi tevékenységek által okozott környezeti problémák megelőzésére és kezelésére irányuló tevékenységek összessége.","correct":false},
-{"answer":"A környezetvédelem célja a természeti erőforrások kihasználásának minimalizálása és az élővilág védelme.","correct":false},
-{"answer":"A környezetvédelem nemcsak a természeti környezet, hanem az emberi környezet védelmét is célul tűzi ki.","correct":false},
-{"answer":"A környezetvédelem nem fontos, mert az emberi tevékenységek nem okoznak környezeti problémákat.","correct":true}
-]},
-{"question":"Melyik következő állítás nem igaz az állatokról?",
-"answers":[
-{"answer":"Az állatok lehetnek húsevők, növényevők vagy általános élelmezésűek.","correct":false},
-{"answer":"Az állatok lehetnek különféle méretűek, formájúak és színűek.","correct":false},
-{"answer":"Az állatok lehetnek szabadon élők vagy tartottak.","correct":false},
-{"answer":"Az állatok nem képesek mozogni.","correct":true}
-]},
-
-{"question":"Melyik következő állítás nem igaz a növényekről?",
-"answers":[
-{"answer":"A növények fotoszintézissel állítják elő saját táplálékukat.","correct":false},
-{"answer":"A növények képesek mozogni.","correct":true},
-{"answer":"A növények többféle módon szaporodnak, például magról, rügyből, gyökérsarjból és hajtásokból.","correct":false},
-{"answer":"A növényeknek szükségük van tápanyagokra, vízre és oxigénre a növekedéshez és fejlődéshez.","correct":false}
-]},
-
-{"question":"Melyik következő állítás nem igaz a közlekedésről?",
-"answers":[
-{"answer":"A közlekedés az emberek és áruk szállítását szolgáló eszközök összessége.","correct":false},
-{"answer":"A közlekedés lehet tömegközlekedés, közúti közlekedés, vízi közlekedés, vasúti közlekedés és légi közlekedés.","correct":false},
-{"answer":"A közlekedés fontos szerepet játszik az emberek mindennapi életében, mert lehetővé teszi, hogy eljussunk a munkahelyünkre, iskolába, boltba stb.","correct":false},
-{"answer":"A közlekedés nem okoz károsanyag-kibocsátást és nem terheli a környezetet.","correct":true}
-]},
-{"question":"Melyik következő állítás nem igaz a vírusokról?",
-"answers":[
-{"answer":"A vírusok kórokozók, melyek képesek betegségeket okozni az élő szervezetekben.","correct":false},
-{"answer":"A vírusok önálló életformák, melyek képesek szaporodni, de csak sejtekben tudnak élni.","correct":false},
-{"answer":"A vírusokat csak a sejtmembrán át tudják behatolni a sejtekbe, ahol a sejtek saját anyagcseréjét használják fel a szaporodáshoz.","correct":false},
-{"answer":"A vírusok nem okozhatnak betegségeket, mert nem rendelkeznek saját anyagcserével.","correct":true}
-]},
-
-{"question":"Melyik következő állítás nem igaz a természeti katasztrófákról?",
-"answers":[
-{"answer":"A természeti katasztrófák olyan események, melyeket a természet okoz, és amelyek komoly károkat okoznak az emberekben, az állatokban és a természetben.","correct":false},
-{"answer":"A természeti katasztrófák lehetnek természeti csapások, mint például a hurrikánok, az árvizek, a földrengések, a vulkánkitörések és a szökőárak.","correct":false},
-{"answer":"A természeti katasztrófák előrejelzése és megelőzése lehetővé teszi, hogy az emberek időben menekülhessenek és védekezhessenek a katasztrófa előtt.","correct":false},
-{"answer":"A természeti katasztrófák nem okoznak károkat az emberekben, az állatokban és a természetben.","correct":true}
-]},
-{"question":"Melyik következő állítás nem igaz a naprendszerről?",
-"answers":[
-{"answer":"A Naprendszer a Nap körüli bolygórendszere, melyben a Nap és a Nap körüli bolygók keringenek.","correct":false},
-{"answer":"A Naprendszerben több mint 200 bolygó található, köztük a Föld is.","correct":true},
-{"answer":"A Naprendszer a Nap körül keringő bolygók, holdak, üstökösök és kisebb objektumok összessége.","correct":false},
-{"answer":"A Naprendszerben a Nap és a bolygók között gravitációs kölcsönhatások működnek, melyeknek köszönhetően a bolygók keringenek a Napon.","correct":false}
-]},
-
-{"question":"Melyik következő állítás nem igaz a Földről?",
-"answers":[
-{"answer":"A Föld a Naprendszer második legkisebb bolygója, amely a Nap körül kering.","correct":true},
-{"answer":"A Föld külső rétege, a kőzetekből álló litoszféra légkörünk alatt található.","correct":false},
-{"answer":"A Föld átlagos távolsága a Naptól 149,6 millió kilométer, és körülbelül 365,25 nap alatt teszi meg a keringési útját.","correct":false},
-{"answer":"A Földön többféle éghajlat található, amelyeket a Föld eltérő távolsága a Naptól, a Föld forgása és a Föld dőlésszöge határoz meg.","correct":false}
-]},
-{"question":"Melyik következő állítás nem igaz a Földről?",
-"answers":[
-{"answer":"A Föld a Naprendszer második legkisebb bolygója, amely a Nap körül kering.","correct":true},
-{"answer":"A Föld külső rétege, a kőzetekből álló litoszféra légkörünk alatt található.","correct":false},
-{"answer":"A Föld átlagos távolsága a Naptól 149,6 millió kilométer, és körülbelül 365,25 nap alatt teszi meg a keringési útját.","correct":false},
-{"answer":"A Földön többféle éghajlat található, amelyeket a Föld eltérő távolsága a Naptól, a Föld forgása és a Föld dőlésszöge határoz meg.","correct":false}
-]},
-
-{"question":"Melyik következő állítás nem igaz a Föld légköréről?",
-"answers":[
-{"answer":"A Föld légköre a Föld felszínétől kezdődően a Földön található levegő összessége.","correct":false},
-{"answer":"A Föld légköre a Föld felszínétől kezdődően a Földön található víz összessége.","correct":true},
-{"answer":"A Föld légköre a Föld felszínétől kezdődően a Földön található élőlények összessége.","correct":true},
-{"answer":"A Föld légköre a Föld felszínétől kezdődően a Földön található összes anyag összessége.","correct":true}
-]},
-{"question":"Melyik következő állítás nem igaz a kémiai reakciókról?",
-"answers":[
-{"answer":"A kémiai reakciók során új anyagok keletkeznek.","correct":false},
-{"answer":"A kémiai reakciók során a reakciós anyagok összetétele megváltozik.","correct":false},
-{"answer":"A kémiai reakciók során a reakciós anyagok mennyisége megváltozik.","correct":false},
-{"answer":"A kémiai reakciók során a reakciós anyagok formája megváltozik.","correct":true}
-]},
-{"question":"Melyik következő elem nem része a hidrogén-oxigén összetételű víznek (H2O)?",
-"answers":[
-{"answer":"Oxigén","correct":false},
-{"answer":"Szén","correct":true},
-{"answer":"Hidrogén","correct":false},
-{"answer":"Nitrogén","correct":false}
-]},
-{"question":"Melyik következő csillagjegy a legérzékenyebb?",
-"answers":[
-{"answer":"Bika","correct":false},
-{"answer":"Skorpió","correct":false},
-{"answer":"Nyilas","correct":false},
-{"answer":"Halak","correct":true}
-]},
-
-{"question":"Melyik következő állítás nem igaz az asztrológiáról?",
-"answers":[
-{"answer":"Az asztrológia a csillagok és a bolygók állásának és mozgásának tanulmányozásával foglalkozik.","correct":false},
-{"answer":"Az asztrológia az emberi sorsot és jövőbeli eseményeket jósoló tudomány.","correct":true},
-{"answer":"Az asztrológia segítségével megállapítható, hogy az egyes csillagjegyekhez tartozó személyek milyen tulajdonságokkal rendelkeznek.","correct":false},
-{"answer":"Az asztrológia az astrofizikával rokon tudomány, de nem tekinthető az astrofizika részét.","correct":false}
-]},
-
-{"question":"Melyik következő állítás nem igaz az atommagról?",
-"answers":[
-{"answer":"Az atommag a legkisebb része az állandó atomoknak.","correct":false},
-{"answer":"Az atommagot általában protonok és neutronok összessége alkotja.","correct":false},
-{"answer":"Az atommagot körülvevő elektronok száma megegyezik az atommag protonjainak számával.","correct":true},
-{"answer":"Az atommagot körülvevő elektronok száma meghaladhatja az atommag protonjainak számát.","correct":true}
-]},
-{"question":"Melyik következő állítás nem igaz az elemekről?",
-"answers":[
-{"answer":"Az elemek a természetben előforduló összes anyag alapvető összetevői.","correct":false},
-{"answer":"Az elemeket a protonszámuk alapján osztályozzák.","correct":false},
-{"answer":"Az elemek általában nem reakcióba lépnek egymással.","correct":true},
-{"answer":"Az elemek általában azonos tulajdonságokkal rendelkeznek.","correct":true}
-]},
-
-{"question":"Melyik következő állítás nem igaz a periódusos rendszerről?",
-"answers":[
-{"answer":"A periódusos rendszer az elemek rendszerezésére szolgáló táblázat.","correct":false},
-{"answer":"A periódusos rendszer az elemeket a protonszámuk alapján sorrendbe rendezi.","correct":false},
-{"answer":"A periódusos rendszerben az elemek azonos tulajdonságokkal rendelkeznek az adott oszlopban.","correct":false},
-{"answer":"A periódusos rendszer az elemeket a fizikai és kémiai tulajdonságaik alapján rendezi.","correct":true}
-]},
 {"question":"Melyik a Magyarország legmagasabb hegye?",
 "answers":[
 {"answer":"Kékes","correct":true},
 {"answer":"Mátrabérc","correct":false},
 {"answer":"Nagy-Somos-kő","correct":false},
 {"answer":"Csóványos","correct":false}
+]},
+{"quewstion":"Melyik a Magyarország legnagyobb tava?",
+"answers":[
+{"answer":"Balaton","correct":true},
+{"answer":"Tisza-tó","correct":false},
+{"answer":"Fertő-tó","correct":false},
+{"answer":"Hévíz-tó","correct":false}
+]},
+{"question":"Hol található Magyarország legmélyebb része?",
+"answers":[
+{"answer":"a Késkes hegyen", "correct":false},
+{"answer":"a Mátrában", "correct":false},
+{"answer":"a Dunántúlon", "correct":false},
+{"answer":"a Hortobágyon", "correct":true}
+]},
+{"question":"Melyik a Magyarország legnagyobb folyója?",
+"answers":[
+{"answer":"Duna", "correct":true},
+{"answer":"Tisza", "correct":false},
+{"answer":"Dráva", "correct":false},
+{"answer":"Rába", "correct":false}
+]},
+{"question":"Melyik a Magyarország legnagyobb városa?",
+"answers":[
+{"answer":"Budapest", "correct":true},
+{"answer":"Debrecen", "correct":false},
+{"answer":"Szeged", "correct":false},
+{"answer":"Miskolc", "correct":false}
+]},
+{"question":"Melyik a Magyarország legnagyobb szigete?",
+"answers":[
+{"answer":"Öreg-sziget", "correct":false},
+{"answer":"Margit-sziget", "correct":false},
+{"answer":"Szentendre-sziget", "correct":false},
+{"answer":"Csepel-sziget", "correct":true}
+]},
+{"question":"Ki írta a következő irodalmi művet: A három testőr?",
+"answers":[
+{"answer":"Charles Dickens", "correct":false},
+{"answer":"Jules Verne", "correct":false},
+{"answer":"Alexandre Dumas", "correct":true},
+{"answer":"William Shakespeare", "correct":false}
+]},
+{"question":"Milyen típusú játék a League of Legends?",
+"answers":[
+{"answer":"FPS", "correct":false},
+{"answer":"MMORPG", "correct":false},
+{"answer":"MOBA", "correct":true},
+{"answer":"RTS", "correct":false}
+]},
+{"question":"Milyen műfajú zenék hallhatók a League of Legends játékban?",
+"answers":[
+{"answer":"Rock", "correct":false},
+{"answer":"Metal", "correct":false},
+{"answer":"Klasszikus", "correct":false},
+{"answer":"Elektronikus zenék", "correct":true}
+]},
+{"question":"Mi a Google cég legismertebb terméke?",
+"answers":[
+{"answer":"Android", "correct":false},
+{"answer":"Chrome", "correct":false},
+{"answer":"YouTube", "correct":false},
+{"answer":"Keresőmotor", "correct":true}
+]},
+{"question":"Mi a Google Chrome böngésző?",
+"answers":[
+{"answer":"Keresőmotor", "correct":false},
+{"answer":"Szoftver", "correct":false},
+{"answer":"Operációs rendszer", "correct":false},
+{"answer":"Böngésző", "correct":true}
+]},
+
+{"question":"Melyik az egyetlen, legáltalánosabban elfogadott fizetőeszköz Magyarországon?",
+"answers":[
+{"answer":"Euro", "correct":false},
+{"answer":"Forint", "correct":true},
+{"answer":"Dollár", "correct":false},
+{"answer":"Pfund", "correct":false}
+]},
+{"question":"Milyen készpénzfajtákat lehet Magyarországon forgalomba hozni?",
+"answers":[
+{"answer":"5,10,20,50,100, 200, 500, 1000, 2000, 5000, 10000, 20000", "correct":true},
+{"answer":"5,10,20,50,100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000", "correct":false},
+{"answer":"5,10,20,50,100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000", "correct":false},
+{"answer":"5,10,20,50,100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000", "correct":false}
+]},
+{"question":"Melyik az a bank, amelyik Magyarországon a legnagyobb hálózattal rendelkezik?",
+"answers":[
+{"answer":"OTP", "correct":true},
+{"answer":"Erste", "correct":false},
+{"answer":"K&H", "correct":false},
+{"answer":"MKB", "correct":false}
+]},
+{"question":"Melyik a legnagyobb magyar bank?",
+"answers":[
+{"answer":"OTP", "correct":true},
+{"answer":"Erste", "correct":false},
+{"answer":"K&H", "correct":false},
+{"answer":"MKB", "correct":false}
+]},
+{"question":"Melyik volt az ókori Egyiptom legfontosabb istennője?",
+"answers":[
+{"answer":"Anubis", "correct":false},
+{"answer":"Osiris", "correct":false},
+{"answer":"Horus", "correct":false},
+{"answer":"Isis", "correct":true}
+]},
+{"question":"Melyik volt az ókori Egyiptom legfontosabb folyója?",
+"answers":[
+{"answer":"Nílus", "correct":true},
+{"answer":"Eufrátesz", "correct":false},
+{"answer":"Tigris", "correct":false},
+{"answer":"Jordan", "correct":false}
+]},
+{"question":"Melyik csapat nyerte meg az első labdarúgó-világbajnokságot?",
+"answers":[
+{"answer":"Brazília", "correct":false},
+{"answer":"Argentina", "correct":false},
+{"answer":"Spanyolország", "correct":false},
+{"answer":"Uruguay", "correct":true}
+]},
+{"question":"Melyik atléta nyerte el az első olimpiai aranyérmet 100 méter síkfutásban?",
+"answers":[
+{"answer":"Thomas Burke", "correct":true},
+{"answer":"Usuain Bolt", "correct":false},
+{"answer":"Carl Lewis", "correct":false},
+{"answer":"Jesse Owens", "correct":false}
+]},
+{"question":"Melyik kosárlabda csapat nyerte el a legtöbb NBA-bajnokságot?",
+"answers":[
+{"answer":"Boston Celtics és a Los Angeles Lakers", "correct":true},
+{"answer":"Los Angeles Lakers és a Chicago Bulls", "correct":false},
+{"answer":"Chicago Bulls és Boston Celtics", "correct":false},
+{"answer":"San Antonio Spurs és a Chicago Bulls", "correct":false}
+]},
+{"question":"Melyik számrendszerben íródik le a következő szám: 1010101?",
+"answers":[
+{"answer":"Bináris", "correct":true},
+{"answer":"Oktális", "correct":false},
+{"answer":"Hexadecimális", "correct":false},
+{"answer":"Decimális", "correct":false}
+]},
+{"question":"Melyik számrendszerben íródik le a következő szám: AF?",
+"answers":[
+{"answer":"Bináris", "correct":false},
+{"answer":"Oktális", "correct":false},
+{"answer":"Hexadecimális", "correct":true},
+{"answer":"Decimális", "correct":false}
+]},
+{"question":"Melyik számrendszerben íródik le a következő szám: 123?",
+"answers":[
+{"answer":"Bináris", "correct":false},
+{"answer":"Oktális", "correct":false},
+{"answer":"Hexadecimális", "correct":false},
+{"answer":"Decimális", "correct":true}
+]},
+{"question":"Mikor ünnepeljük a Karácsonyt?",
+"answers":[
+{"answer":"December 24-én", "correct":false},
+{"answer":"December 25-én", "correct":true},
+{"answer":"December 26-án", "correct":false},
+{"answer":"December 27-én", "correct":false}
+]},
+{"question":"Mikor ünnepeljük a Szilvesztert?",
+"answers":[
+{"answer":"December 24-én", "correct":false},
+{"answer":"December 25-én", "correct":false},
+{"answer":"December 26-án", "correct":false},
+{"answer":"December 31-én", "correct":true}
+]},
+{"question":"Melyik evangélista írta le az első Karácsonyt?",
+"answers":[
+{"answer":"Máté", "correct":false},
+{"answer":"Márk", "correct":false},
+{"answer":"Lukács", "correct":true},
+{"answer":"János", "correct":false}
+]},
+{"question":"Melyik evangélista írta le az első Szilvesztert?",
+"answers":[
+{"answer":"Máté", "correct":false},
+{"answer":"Márk", "correct":false},
+{"answer":"Lukács", "correct":false},
+{"answer":"János", "correct":true}
+]},
+{"question":"Melyik állat hangját használják a Jingle Bells című karácsonyi dalban?",
+"answers":[
+{"answer":"Kutya", "correct":false},
+{"answer":"Cicák", "correct":false},
+{"answer":"Ló", "correct":true},
+{"answer":"Disznó", "correct":false}
+]},
+{"question":"Milyen típusú előfizetések állnak rendelkezésre a Spotify-n?",
+"answers":[
+{"answer":"Ingyenes, Felnőtt, Diák, Kedvezményes", "correct":false},
+{"answer":"Ingyenes, Felnőtt, Diák, Kedvezményes, Családi", "correct":true},
+{"answer":"Ingyenes, Felnőtt, Diák, Kedvezményes, Családi, Kedvezményes", "correct":false},
+{"answer":"Ingyenes, Felnőtt, Diák, Kedvezményes, Családi, Kedvezményes, Nyugdíjas", "correct":false}
+]},
+{"question":"Milyen állatok a csótányok?",
+"answers":[
+{"answer":"Kétéltűek", "correct":false},
+{"answer":"Rovarok", "correct":true},
+{"answer":"Halak", "correct":false},
+{"answer":"Madarak", "correct":false}
+]},
+{"question":"Melyik zenekar volt az első, amelyik kétszer is megnyerte a magyar Rock-Maraton díjat?",
+"answers":[
+{"answer":"Road", "correct":false},
+{"answer":"Omega", "correct":false},
+{"answer":"Napalm Death", "correct":false},
+{"answer":"Tankcsapda", "correct":true}
+]},
+{"question":"Melyik a legnépszerűbb szórakozási forma Magyarországon?",
+"answers":[
+{"answer":"Könyvek olvasása", "correct":false},
+{"answer":"Mozizás", "correct":false},
+{"answer":"Kertészkedés", "correct":false},
+{"answer":"tévézés", "correct":true}
+]},
+{"question":"Milyen épületekben találhatóak az általában a mozik?",
+"answers":[
+{"answer":"Könyvtárakban", "correct":false},
+{"answer":"Múzeumokban", "correct":false},
+{"answer":"Bevásárlólözpontokban", "correct":true},
+{"answer":"Iskolákban", "correct":false}
 ]}
 ]}
