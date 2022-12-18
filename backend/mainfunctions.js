@@ -7,9 +7,20 @@ async function register(incom) {
     if (incom.password !== incom.password2) {
         res.redirect('/?error=Passwords do not match');
     }
-    db.query("INSERT INTO profiles (name, pwhash, email) VALUES (?, ?, ?)", [incom.username, crypetdPassword, incom.email]).catch((err) => {
-        console.log(err);
-    });
+    let sameNames = await db.query("SELECT * FROM profiles WHERE name = ?", [incom.username]);
+    let sameEmails = await db.query("SELECT * FROM profiles WHERE email = ?", [incom.email]);
+    if (sameNames.length > 0) {
+        return '/?error=Username already exists';
+    }
+    if (sameEmails.length > 0) {
+        return '/?error=Email already exists'
+    }
+    if(sameEmails.length == 0 && sameNames.length == 0){
+        db.query("INSERT INTO profiles (name, pwhash, email) VALUES (?, ?, ?)", [incom.username, crypetdPassword, incom.email]).catch((err) => {
+            console.log(err);
+        });
+        return '/?status=Registration successful';
+    }
 }
 
 async function login(incom) {
@@ -31,20 +42,47 @@ async function login(incom) {
 
 async function createRoom(incom) {
     let id = session.userId;
-    let result = await db.query("INSERT INTO rooms (userIdOne) VALUES (?)", [id]);
-    return true;
+    let roomIdentifier = makeid()
+    // check room identifier if exists
+    let roomIdfChk = await db.query("SELECT * FROM rooms WHERE identifier = ?", [roomIdentifier]);
+    if (roomIdfChk.length > 0) {
+        return createRoom(incom);
+    }else{
+        let result = await db.query("INSERT INTO rooms (userIdOne,identifier) VALUES (?,?)", [id,roomIdentifier]);
+        return true;
+    }
 }
 
 async function joinRandomRoom(incom) {
-    let id = session.userId;
+    let userid = session.userId;
     let result = await db.query("SELECT * FROM rooms WHERE userIdOne IS NOT NULL AND userIdTwo IS NULL");
     if (result.length === 0) {
         return createRoom(incom);
     }else{
-        let roomId = result[0].id;
-        session.roomId = roomId;
-        await db.query("UPDATE rooms SET userIdTwo = ? WHERE id = ?", [id, roomId]);
-        return true
+        let deletedrooms = []
+        for (let i = 0; i < result.length; i++){
+            if (result[i].userIdOne === userid || result[i].userIdTwo === userid){
+                if(result[i].userIdTwo === userid){
+                    alertEnemyDc(result[i].userIdOne)
+                }else{
+                    alertEnemyDc(result[i].userIdTwo)
+                }
+                let delroom = await db.query("DELETE FROM rooms WHERE id = ?", [result[i].id]);
+                deletedrooms.push(result[i].id);
+            }
+        }
+        if(deletedrooms.length === result.length){
+            return createRoom(incom);
+        }else{
+            for(let i = 0;i<result.length;i++){
+                if(!deletedrooms.includes(result[i].id)){
+                    let roomId = result[i].id;
+                    session.roomId = roomId;
+                    await db.query("UPDATE rooms SET userIdTwo = ? WHERE id = ?", [userid, roomId]);
+                    return true
+                }
+            }
+        }
     }
 }
 
@@ -55,10 +93,42 @@ async function selectRandomQuestion() {
     return [question, answer, result[0].id];
 }
 
+async function getStats() {
+    let id = session.userId;
+    let result = await db.query("SELECT wins, games, exp, korong FROM profiles WHERE id = ?", [id]);
+    console.log(result[0]);
+    return result[0];
+}
+
+async function alertEnemyDc(enemyId) {
+}
+
+function makeid() {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < 5; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
+async function deleteAllRoom() {
+    await db.query("DELETE FROM rooms");
+}
+
+async function getRoomList() {
+    let result = await db.query("SELECT id, identifier FROM rooms WHERE userIdOne IS NOT NULL AND userIdTwo IS NULL");
+    return result;
+}
+
 module.exports = {
     register,
     login,
     createRoom,
     joinRandomRoom,
-    selectRandomQuestion
+    selectRandomQuestion,
+    getStats,
+    deleteAllRoom,
+    getRoomList
 }
