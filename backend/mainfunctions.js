@@ -21,7 +21,7 @@ async function login(incom) {
     }
     for(let i = 0;i<result.length;i++){
         if(await argon.verify(result[i].pwhash, pass)){
-            session.id = result[i].id;
+            session.userId = result[i].id;
             return true;
         }else{
             return false;
@@ -29,8 +29,28 @@ async function login(incom) {
     }
 }
 
+async function createRoom(incom) {
+    let id = session.userId;
+    let result = await db.query("INSERT INTO rooms (userIdOne) VALUES (?)", [id]);
+    return "success";
+}
+
+async function joinRandomRoom(incom) {
+    let id = session.userId;
+    let result = await db.query("SELECT * FROM rooms WHERE userIdOne IS NOT NULL AND userIdTwo IS NULL");
+    if (result.length === 0) {
+        createRoom(incom);
+        return false;
+    }else{
+        let roomId = result[0].id;
+        await db.query("UPDATE rooms SET userIdTwo = ? WHERE id = ?", [id, roomId]);
+        return true
+    }
+}
 
 module.exports = {
     register,
-    login
+    login,
+    createRoom,
+    joinRandomRoom
 }
