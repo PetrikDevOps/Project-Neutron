@@ -23,20 +23,19 @@ app.get('/', (req, res) => {
     }
 });
 
-app.get('/game', async(req, res) => {
-    if (session.user){
-        res.sendFile(__dirname + '/public/main.html');
+app.post('/login', async(req, res) => {
+    state = await functions.login(req.body);
+    if (state===true){
+        session.user = req.body.username;
+        res.redirect('/')
     }else{
-        res.redirect('/');
+        res.redirect('/?status=Hibás felhasználónév vagy jelszó');
     }
 });
 
-     //\
-    // \\
-   //   \\
-  //     \\
- //       \\
-//functions\\
+app.post('/register', async (req, res) => {
+    res.redirect(await functions.register(req.body));
+});
 
 app.post('/logout', (req, res) => {
     session.user = null;
@@ -52,10 +51,27 @@ app.get('/quick-match', async(req, res) => {
     }
 });
 
-app.post('/register', async (req, res) => {
-    res.redirect(await functions.register(req.body));
+app.get('/game', async(req, res) => {
+    if (session.user){
+        res.sendFile(__dirname + '/public/main.html');
+    }else{
+        res.redirect('/');
+    }
 });
 
+    //\
+   // \\
+  //   \\
+ //     \\
+//  file \\
+
+app.get('/css',(req, res) => {
+    res.sendFile(__dirname + '/public/style/style.css');
+});
+
+app.get('/js',(req, res) => {
+    res.sendFile(__dirname + '/public/main.js');
+});
 
     //\
    // \\
@@ -90,25 +106,6 @@ app.get('/roomList', async (req, res) => {
     }
 });
 
-    //\
-   // \\
-  //   \\
- //     \\
-// fileok\\
-
-app.get('/css',(req, res) => {
-    res.sendFile(__dirname + '/public/style/style.css');
-});
-
-app.get('/js',(req, res) => {
-    res.sendFile(__dirname + '/public/main.js');
-});
-
-     //\
-    // \\
-   //   \\
-  //     \\
- //       \\
 // Indítás \\
 
 app.listen(port, () => {
