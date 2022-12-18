@@ -1,4 +1,4 @@
-const endpoint="http://localhost:3000/game?isApi=true"
+const endpoint="http://localhost:3000/game?isApi=true";
 
 let changeRegLog = (wannaReg) => {
     let reg = document.getElementById('register-block')
@@ -39,7 +39,8 @@ let genMap = () => {
             let canvas = document.getElementById('main-display')
             let ctx = canvas.getContext('2d')
             let img = document.getElementById("test");
-            ctx.drawImage(img, 10, 10);
+            let img1 = new Image(100, 100, img.src)
+            ctx.drawImage(img1, 10, 10);
         }
     }
 }
