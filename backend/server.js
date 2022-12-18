@@ -33,7 +33,6 @@ app.post('/login', async(req, res) => {
 });
 
 app.post('/register', (req, res) => {
-    console.log(req.body);
     functions.register(req.body);
     res.redirect('/?status=sikeres regisztráció');
 });
@@ -47,6 +46,28 @@ app.get('/css',(req, res) => {
     res.sendFile(__dirname + '/public/style/style.css');
 });
 
+app.get('/quick-match', async(req, res) => {
+    state = await functions.joinRandomRoom(req.body);
+    if (state===true){
+        res.redirect('/game');
+    }else{
+        res.redirect('/?status=Hiba történt');
+    }
+});
+
+app.get('/game', async(req, res) => {
+    if (session.user){
+        if(req.query.isApi=='true'){
+            let question = await functions.selectRandomQuestion();
+            res.json(question);
+        }
+        else{
+            res.sendFile(__dirname + '/public/main.html');
+        }
+    }else{
+        res.redirect('/');
+    }
+});
 
 app.listen(port, () => {
    console.log(`Backend server is running on port ${port}`);

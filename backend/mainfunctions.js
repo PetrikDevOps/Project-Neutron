@@ -32,25 +32,33 @@ async function login(incom) {
 async function createRoom(incom) {
     let id = session.userId;
     let result = await db.query("INSERT INTO rooms (userIdOne) VALUES (?)", [id]);
-    return "success";
+    return true;
 }
 
 async function joinRandomRoom(incom) {
     let id = session.userId;
     let result = await db.query("SELECT * FROM rooms WHERE userIdOne IS NOT NULL AND userIdTwo IS NULL");
     if (result.length === 0) {
-        createRoom(incom);
-        return false;
+        return createRoom(incom);
     }else{
         let roomId = result[0].id;
+        session.roomId = roomId;
         await db.query("UPDATE rooms SET userIdTwo = ? WHERE id = ?", [id, roomId]);
         return true
     }
+}
+
+async function selectRandomQuestion() {
+    let result = await db.query("SELECT * FROM questions ORDER BY RAND() LIMIT 1");
+    let question = result[0].question;
+    let answer = result[0].answers.split(',');
+    return [question, answer, result[0].id];
 }
 
 module.exports = {
     register,
     login,
     createRoom,
-    joinRandomRoom
+    joinRandomRoom,
+    selectRandomQuestion
 }
