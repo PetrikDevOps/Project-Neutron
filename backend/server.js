@@ -94,7 +94,6 @@ app.get('/js',(req, res) => {
 });
 
 app.get('/soruce',(req, res) => {
-    console.log(req.query.src);
     res.sendFile(__dirname + '/public/sources/'+req.query.src);
 });
 
