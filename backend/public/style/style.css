@@ -141,6 +141,7 @@
   color: rgba(255, 255, 255, 0.893);
 }
 #lobby-main #fast-game form input {
+  border: none;
   background-color: rgba(240, 248, 255, 0);
 }
 #lobby-main #lobby-game {
@@ -186,6 +187,7 @@
   color: rgba(255, 255, 255, 0.893);
 }
 #lobby-main #lobby-game form input {
+  border: none;
   background-color: rgba(240, 248, 255, 0);
 }
 #lobby-main #profile {
