@@ -23,19 +23,20 @@ app.get('/', (req, res) => {
     }
 });
 
-app.post('/login', async(req, res) => {
-    state = await functions.login(req.body);
-    if (state===true){
-        session.user = req.body.username;
-        res.redirect('/')
+app.get('/game', async(req, res) => {
+    if (session.user){
+        res.sendFile(__dirname + '/public/main.html');
     }else{
-        res.redirect('/?status=Hibás felhasználónév vagy jelszó');
+        res.redirect('/');
     }
 });
 
-app.post('/register', async (req, res) => {
-    res.redirect(await functions.register(req.body));
-});
+     //\
+    // \\
+   //   \\
+  //     \\
+ //       \\
+//functions\\
 
 app.post('/logout', (req, res) => {
     session.user = null;
@@ -51,13 +52,11 @@ app.get('/quick-match', async(req, res) => {
     }
 });
 
-app.get('/game', async(req, res) => {
-    if (session.user){
-        res.sendFile(__dirname + '/public/main.html');
-    }else{
-        res.redirect('/');
-    }
+app.post('/register', async (req, res) => {
+    res.redirect(await functions.register(req.body));
 });
+
+
     //\
    // \\
   //   \\
