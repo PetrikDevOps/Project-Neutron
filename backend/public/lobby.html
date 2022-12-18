@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css">
+    <link rel="stylesheet" href="./style/style.css">
     <script src="main.js" defer></script>
     <title>Project-Neutron</title>
 </head>
@@ -22,16 +22,17 @@
         <div id="fast-game">
             <h1>Fast-Game</h1>
             <p>Play a game with random people</p>
-            <button>Play</button>
+            <form action="play" method="post"><input type="submit" value="Play"></form>
         </div>
         <div id="lobby-game">
             <h1>Lobby-Game</h1>
             <p>Play a game with your friends</p>
             <p>To create a lobby</p>
             <div>
-                <button id="button-margin-fix">Lobby készitése</button>
-                <button>Csatlakozás</button></div>
+                <form action="lobbyGen" method="post"><input type="submit" value="LobbyGEN"></form>
+                <form action="join" method="post"><input type="submit" value="join"></form>
             </div>
+        </div>
         <div id="profile">
             <h1>Profil</h1>
             <p>Level: </p>
