@@ -46,6 +46,10 @@ app.get('/css',(req, res) => {
     res.sendFile(__dirname + '/public/style/style.css');
 });
 
+app.get('/js',(req, res) => {
+    res.sendFile(__dirname + '/public/main.js');
+});
+
 app.get('/quick-match', async(req, res) => {
     state = await functions.joinRandomRoom(req.body);
     if (state===true){

@@ -1,3 +1,5 @@
+const endpoint="http://localhost:3000/game?isApi=true"
+
 let changeRegLog = (wannaReg) => {
     let reg = document.getElementById('register-block')
     let log = document.getElementById('login-block')
