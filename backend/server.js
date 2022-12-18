@@ -59,6 +59,26 @@ app.get('/game', async(req, res) => {
     }
 });
 
+app.post('/join',async(req, res) => {
+    if (session.user){
+        if(functions.joinFixRoom(req.body)){
+            res.redirect('/game');
+        }
+    }else{
+        res.redirect('/');
+    }
+});
+
+app.post('newLobby', async(req, res) => {
+    if (session.user){
+        if(functions.createRoom(req.body)){
+            res.redirect('/game');
+        }
+    }else{
+        res.redirect('/');
+    }
+});
+
     //\
    // \\
   //   \\
@@ -72,6 +92,12 @@ app.get('/css',(req, res) => {
 app.get('/js',(req, res) => {
     res.sendFile(__dirname + '/public/main.js');
 });
+
+app.get('/soruce',(req, res) => {
+    console.log(req.query.src);
+    res.sendFile(__dirname + '/public/sources/'+req.query.src);
+});
+
 
     //\
    // \\

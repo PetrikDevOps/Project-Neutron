@@ -55,7 +55,7 @@ async function createRoom(incom) {
 
 async function joinRandomRoom(incom) {
     let userid = session.userId;
-    let result = await db.query("SELECT * FROM rooms WHERE userIdOne IS NOT NULL AND userIdTwo IS NULL");
+    let result = await db.query("SELECT * FROM rooms WHERE userIdOne IS NOT NULL AND userIdTwo IS NULL AND private = 0");
     if (result.length === 0) {
         return createRoom(incom);
     }else{
@@ -122,6 +122,37 @@ async function getRoomList() {
     return result;
 }
 
+async function joinFixRoom(incom) {
+    let userid = session.userId;
+    let tojoin = incom.roomKey;
+    let roomWithId = await db.query("SELECT * FROM rooms WHERE identifier = ?", [tojoin]);
+    if (roomWithId.length === 0) {
+        return false;
+    }else{
+        if (roomWithId[0].userIdTwo == null) {
+            await db.query("UPDATE rooms SET userIdTwo = ? WHERE identifier = ?", [userid, tojoin]);
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+
+async function createPrivateRoom(incom) {
+    let id = session.userId;
+    let roomIdentifier = makeid()
+    // check room identifier if exists
+    let roomIdfChk = await db.query("SELECT * FROM rooms WHERE identifier = ?", [roomIdentifier]);
+    if (roomIdfChk.length > 0) {
+        return createPrivateRoom(incom);
+    }else{
+        let result = await db.query("INSERT INTO rooms (userIdOne,identifier,private) VALUES (?,?,1)", [id,roomIdentifier]);
+        return true;
+    }
+}
+
+
+
 module.exports = {
     register,
     login,
@@ -130,5 +161,7 @@ module.exports = {
     selectRandomQuestion,
     getStats,
     deleteAllRoom,
-    getRoomList
+    getRoomList,
+    joinFixRoom,
+    createPrivateRoom
 }
