@@ -39,8 +39,8 @@ let genMap = () => {
             let canvas = document.getElementById('main-display')
             let ctx = canvas.getContext('2d')
             let img = document.getElementById("test");
-            let img1 = new Image(100, 100, img.src)
-            ctx.drawImage(img1, 10, 10);
+            ctx.drawImage(img, 100 *i, 100*j, 100, 100);
+        
         }
     }
 }
@@ -48,5 +48,4 @@ let genMap = () => {
 let main = () => {
     genMap()
 }
-
 main()
