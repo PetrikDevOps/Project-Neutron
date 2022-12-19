@@ -174,7 +174,14 @@ async function getLobbyStatus(incom){
 
 async function checkTimeAndStats(incom){
     let getAndId = session.userIds.find(x => x.name === incom.cookies.username).id;
-    let getRooms
+    let getRoom = await db.query("SELECT * FROM rooms WHERE userIdOne = ? OR userIdTwo = ?", [getAndId,getAndId]);
+    if (getRoom.length === 0) {
+        return false;
+    }else{
+        let PlayerOneId = getRoom[0].userIdOne;
+        let PlayerTwoId = getRoom[0].userIdTwo;
+
+    }
 }
 
 module.exports = {
