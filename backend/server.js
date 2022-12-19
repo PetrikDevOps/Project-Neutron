@@ -5,6 +5,7 @@ const router = express.Router();
 const functions = require('./mainfunctions');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const { json } = require('express');
 const expressWs = require('express-ws')(app);
 
 session.usernames= [];
@@ -166,9 +167,18 @@ app.ws('/ws', async(ws, req) => {
     });
     ws.on('message', async (msg) => {
         //A kliens üzenetet küldött
+        console.log(msg);
         let loobystatus = await functions.getLobbyStatus(req);
-        tosend = JSON.stringify(loobystatus);
-        ws.send(tosend);
+        console.log(loobystatus);
+        switch (loobystatus){
+            case 'waiting_for_player':
+            case 'waiting_for_private':
+                ws.send(JSON.stringify({status: 'waiting_for_player'}));
+                break;
+            case 'korkezdes':
+                ws.send(JSON.stringify({status: 'prepare'}));
+                break;
+        }
     });
     ws.on('close', async () => {
         //A kliens lecsatlakozott

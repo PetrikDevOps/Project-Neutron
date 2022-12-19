@@ -81,7 +81,7 @@ async function joinRandomRoom(incom) {
                 if(!deletedrooms.includes(result[i].id)){
                     let roomId = result[i].id;
                     session.roomId = roomId; //Cserélni kell
-                    await db.query("UPDATE rooms SET userIdTwo = ? WHERE id = ?", [userid, roomId]);
+                    await db.query("UPDATE rooms SET userIdTwo = ?, gameState = 1 WHERE id = ?", [userid, roomId]);
                     return true
                 }
             }
@@ -133,7 +133,7 @@ async function joinFixRoom(incom) {
         return false;
     }else{
         if (roomWithId[0].userIdTwo == null) {
-            await db.query("UPDATE rooms SET userIdTwo = ? WHERE identifier = ?", [userid, tojoin]);
+            await db.query("UPDATE rooms SET userIdTwo = ?, gameState = 1 WHERE identifier = ?", [userid, tojoin]);
             return true;
         }else{
             return false;

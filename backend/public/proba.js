@@ -1,14 +1,27 @@
 const socket = new WebSocket('ws://localhost:3000/ws');
+
 socket.addEventListener('open', function (event) {
-    socket.send('Hello Server!');
+    socket.send('Client connected');
 });
 socket.addEventListener('message', function (event) {
-    console.log('Message from server ', event.data);
-    que.push(event.data)
+    let realmsg = JSON.parse(event.data)
+    if(realmsg.status == 'waiting_for_player'){
+        setTimeout(checkStatus, 1000);
+        console.log('Waiting for player');
+    }else if(realmsg.status == 'prepare'){
+    }
 });
 socket.addEventListener('close', function (event) {
     console.log('Connection closed');
 });
+
+function checkStatus(){
+    socket.send('checkStatus');
+}
+
+
+//Preisler Hülyesége
+
 
 let que = [
     {
@@ -32,7 +45,7 @@ class Kérdés {
     disply() {
         document.getElementById('kérdés').innerHTML = this.question
         for (let i = 0; i < this.answers.length; i++) {
-            document.getElementById('válasz' + i).value = this.answers[i]
+            document.getElementById('válasz' + i).innerHTML = this.answers[i]
         }
     }
 }

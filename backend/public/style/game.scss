@@ -51,10 +51,6 @@
         box-shadow: 0px 0px 30px 10px rgba(255, 255, 255, 0.79);
         background-color: rgba(0, 0, 0, 0.709);
         color: wheat;
-
-        input{
-            color: wheat;
-        }
     }
 }
 #válaszok{
@@ -70,6 +66,7 @@
     border-radius: 2vh;
     margin: 1vh;
     transition: 0.2s;
+    font-size: 2vh;
 
     &:hover{
         background-color: rgba(160, 85, 47, 0.944);
@@ -80,16 +77,7 @@
 .cursor-pointer {
     cursor: pointer;
 }
-input[type="submit"]{
-    font-size: 3vh;
-    background-color: rgba(0, 0, 0, 0);
-    width: 100%;
-    height: 100%;
-    border: none;
-    transition: 0.5s;
-
     
-}
 body{
     background-color: rgba(0, 0, 0, 0.5);
 }
