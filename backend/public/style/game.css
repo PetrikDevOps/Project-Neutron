@@ -1,0 +1,68 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 10vh;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#test {
+  display: none;
+}
+
+#test2 {
+  display: none;
+}
+
+#kérdés-cont {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  border: 1px solid black;
+  padding: 5vh 7vh;
+}
+
+#kérdés {
+  padding: 2vh;
+  text-align: center;
+}
+
+#cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.309);
+  padding: 5vh;
+  border-radius: 2vh;
+}
+
+#válaszok {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.válasz {
+  font-size: 3vh;
+  text-align: center;
+  border: 10px dashed rgba(158, 106, 51, 0.747);
+  background-color: rgba(82, 35, 12, 0.544);
+  padding: 1vh;
+  border-radius: 2vh;
+  margin: 1vh;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+input[type=submit] {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}/*# sourceMappingURL=game.css.map */

@@ -32,7 +32,7 @@ class Kérdés {
     disply() {
         document.getElementById('kérdés').innerHTML = this.question
         for (let i = 0; i < this.answers.length; i++) {
-            document.getElementById('válasz' + i).innerHTML = this.answers[i]
+            document.getElementById('válasz' + i).value = this.answers[i]
         }
     }
 }
