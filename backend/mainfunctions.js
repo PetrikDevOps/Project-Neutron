@@ -172,15 +172,23 @@ async function getLobbyStatus(incom){
     }
 }
 
-async function checkTimeAndStats(incom){
+async function checkTime(incom){
     let getAndId = session.userIds.find(x => x.name === incom.cookies.username).id;
     let getRoom = await db.query("SELECT * FROM rooms WHERE userIdOne = ? OR userIdTwo = ?", [getAndId,getAndId]);
     if (getRoom.length === 0) {
         return false;
     }else{
-        let PlayerOneId = getRoom[0].userIdOne;
-        let PlayerTwoId = getRoom[0].userIdTwo;
-
+        let getTime = getRoom[0].timer;
+        if (getTime === null) {
+            await db.query("UPDATE rooms SET timer = ? WHERE id = ? ", [5, getRoom[0].id]);
+            return 5
+        }else if(getTime == 0){
+            await db.query("UPDATE rooms SET timer = ? WHERE id = ? ", [20, getRoom[0].id]);
+            return 20
+        }
+        else{
+            return getTime
+        }
     }
 }
 
@@ -195,5 +203,6 @@ module.exports = {
     getRoomList,
     joinFixRoom,
     createPrivateRoom,
-    getLobbyStatus
+    getLobbyStatus,
+    checkTime
 }

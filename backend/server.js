@@ -167,16 +167,15 @@ app.ws('/ws', async(ws, req) => {
     });
     ws.on('message', async (msg) => {
         //A kliens üzenetet küldött
-        console.log(msg);
         let loobystatus = await functions.getLobbyStatus(req);
-        console.log(loobystatus);
         switch (loobystatus){
             case 'waiting_for_player':
             case 'waiting_for_private':
                 ws.send(JSON.stringify({status: 'waiting_for_player'}));
                 break;
             case 'korkezdes':
-                ws.send(JSON.stringify({status: 'prepare'}));
+                let reamingTime = await functions.checkTime(req);
+                ws.send(JSON.stringify({status: 'prepare', time: reamingTime}));
                 break;
         }
     });
