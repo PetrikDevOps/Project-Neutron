@@ -49,16 +49,18 @@ class Player {
     }
     draw(canvas) {
         let ctx = canvas.getContext('2d')
-        ctx.drawImage(this.skin, this.x, this.y, 100, 100);
+        ctx.drawImage(this.skin, this.x, this.y, 200, 200);
     }
 }
 
 let main = () => {
     let canvas = document.getElementById('main-display')
-    let player = new Player('Player', 0, 0, 'test2', 100, 100, 10)
+    let player = new Player('Player', 100, 800, 'test2', 400, 400, 10)
+    let player2 = new Player('Player2', 1500, 800, 'test', 400, 400, 10)
     let kérdés = new Kérdés(que[0].kérdés, que[0].válaszok, que[0].id)
     console.log(kérdés);
     player.draw(canvas)
+    player2.draw(canvas)
     kérdés.disply()
 
 }
