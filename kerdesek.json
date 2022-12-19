@@ -6,7 +6,6 @@
 {"answer":"Oracle","correct":true},
 {"answer":"Microsoft Access","correct":false}
 ]},
-
 {"question":"Melyik következő kifejezés nem egy programozási nyelv neve?",
 "answers":[
 {"answer":"Java","correct":false},
@@ -14,9 +13,6 @@
 {"answer":"Python","correct":false},
 {"answer":"Word","correct":true}
 ]},
-
-
-
 {"question":"Melyik a Magyarország legmagasabb hegye?",
 "answers":[
 {"answer":"Kékes","correct":true},
@@ -94,7 +90,6 @@
 {"answer":"Operációs rendszer", "correct":false},
 {"answer":"Böngésző", "correct":true}
 ]},
-
 {"question":"Melyik az egyetlen, legáltalánosabban elfogadott fizetőeszköz Magyarországon?",
 "answers":[
 {"answer":"Euro", "correct":false},
@@ -248,5 +243,104 @@
 {"answer":"Múzeumokban", "correct":false},
 {"answer":"Bevásárlólözpontokban", "correct":true},
 {"answer":"Iskolákban", "correct":false}
-]}
+]},
+{"question":"Milyen alakú a farfalle tészta?",
+"answers":[
+{"answer":"Szarvacska", "correct":false},
+{"answer":"Kagyló", "correct":false},
+{"answer":"Masni", "correct":true},
+{"answer":"Csiga", "correct":false}
+]},
+{"question":"Milyen tésztából készül a lángos?",
+"answers":[
+{"answer":"Leveles", "correct":false},
+{"answer":"Kelt", "correct":true},
+{"answer":"Hajtogatott", "correct":false},
+{"answer":"Piskóta", "correct":false}
+]},
+{"question":"Milyen szeszes ital az abszint?",
+"answers":[
+{"answer":"Bor", "correct":false},
+{"answer":"Sör", "correct":false},
+{"answer":"Vodka", "correct":false},
+{"answer":"Pálinka", "correct":true}
+]},
+{"question":"Mi nem kell a madártej készítéséhez?",
+"answers":[
+{"answer":"Tej", "correct":false},
+{"answer":"Tojás", "correct":false},
+{"answer":"Vaj", "correct":true},
+{"answer":"Cukor", "correct":false}
+]},
+{"question":"Melyik ország fővárosa Helsinki?",
+"answers":[
+{"answer":"Norvégia", "correct":false},
+{"answer":"Svédország", "correct":false},
+{"answer":"Finnország", "correct":true},
+{"answer":"Dánia", "correct":false}
+]},
+{"question":"Melyik ország fővárosa Budapest?",
+"answers":[
+{"answer":"Magyarország", "correct":true},
+{"answer":"Románia", "correct":false},
+{"answer":"Szlovákia", "correct":false},
+{"answer":"Szlovénia", "correct":false}
+]},
+{"question":"Milyen hosszú a Balaton?",
+"answers":[
+{"answer":"80 km", "correct":false},
+{"answer":"100 km", "correct":false},
+{"answer":"77 km", "correct":true},
+{"answer":"140 km", "correct":false}
+]},
+{"question":"Mi Nógrád megye székhelye?",
+"answers":[
+{"answer":"Békéscsaba", "correct":false},
+{"answer":"Debrecen", "correct":false},
+{"answer":"Szeged", "correct":false},
+{"answer":"Salgótarján", "correct":true}
+]},
+{"question":"Melyik ország fővárosa Dublin?",
+"answers":[
+{"answer":"Írország", "correct":true},
+{"answer":"Izland", "correct":false},
+{"answer":"India", "correct":false},
+{"answer":"Anglia", "correct":false}
+]},
+{"question":"Melyik államban van Dallas?",
+"answers":[
+{"answer":"Texas", "correct":true},
+{"answer":"California", "correct":false},
+{"answer":"Kansas", "correct":false},
+{"answer":"Florida", "correct":false}
+]},
+{"question":"Hol található Budapesten a Halászbástya?",
+"answers":[
+{"answer":"Budai Várban", "correct":true},
+{"answer":"Hösök terén", "correct":false},
+{"answer":"Margit-szigeten", "correct":false},
+{"answer":"Gellért-hegyen", "correct":false}
+]},
+{"question":"Honnan indul a Balaton átúszás?",
+"answers":[
+{"answer":"Balatonfüredről", "correct":false},
+{"answer":"Tihanyból", "correct":false},
+{"answer":"Balatonszemesről", "correct":false},
+{"answer":"Révfülöpről", "correct":true}
+]},
+{"question":"Mi Norvégia fővárosa?",
+"answers":[
+{"answer":"Oslo", "correct":true},
+{"answer":"Liszabon", "correct":false},
+{"answer":"Bern", "correct":false},
+{"answer":"Madrid", "correct":false}
+]},
+{"question":"Mi volt az Aranybulla(1222)?",
+"answers":[
+{"answer":"Királyi okirat", "correct":true},
+{"answer":"Királyi palást", "correct":false},
+{"answer":"Egy zeneszám", "correct":false},
+{"answer":"Aranylánc", "correct":false}
+]},
+
 ]}
