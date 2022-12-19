@@ -57,6 +57,10 @@
     }
   }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 #register-block{
     @include display-block-for-login();
     display: none;
