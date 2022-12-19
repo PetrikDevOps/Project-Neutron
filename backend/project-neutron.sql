@@ -24,7 +24,8 @@ CREATE TABLE `profiles` (
 INSERT INTO `profiles` (`id`, `name`, `email`, `pwhash`, `wins`, `games`, `exp`, `korong`) VALUES
 (1, 'Bagaci', 'Bagaci@bagamail.com', '$argon2id$v=19$m=65536,t=3,p=4$tukFeTQjxB1T4gGurUNFug$8P3S/GI4OIYPvx3k6vWiLxXPkEDpU/a4qycv6m8gbtU', 0, 0, 0, 0),
 (2, 'admin', 'adminmail@mail.com', '$argon2id$v=19$m=65536,t=3,p=4$Uv+24TqKcltmuTPR9Yiyqg$0Smzvw1bJg+ebsWk2gfMPS+9RStTfaERaw2k4bsukdc', 0, 0, 0, 0),
-(5, 'lol', 'adminmail@mail.con', '$argon2id$v=19$m=65536,t=3,p=4$h0sZ9To0/VPy88KC++Zu5g$SMvPxXpPgy0qDYa7BtuYdKoQki7ECAK4l9FOm/GrzKM', 0, 0, 0, 0);
+(5, 'lol', 'adminmail@mail.con', '$argon2id$v=19$m=65536,t=3,p=4$h0sZ9To0/VPy88KC++Zu5g$SMvPxXpPgy0qDYa7BtuYdKoQki7ECAK4l9FOm/GrzKM', 0, 0, 0, 0),
+(6, 'bagci', 'bagci', '$argon2id$v=19$m=65536,t=3,p=4$vh1mq41VoLYdalZAjsESDQ$OTyccq4ctTqm2RDKVhBosZ7Ed2Il1BJM5CMOYYVZPO4', 0, 0, 0, 0);
 
 CREATE TABLE `questions` (
   `id` int(11) NOT NULL,
@@ -79,6 +80,11 @@ CREATE TABLE `rooms` (
   `private` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `skinlist` (
+  `id` int(11) NOT NULL,
+  `skinSrc` varchar(126) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 ALTER TABLE `profiles`
   ADD PRIMARY KEY (`id`,`name`);
@@ -89,14 +95,20 @@ ALTER TABLE `questions`
 ALTER TABLE `rooms`
   ADD PRIMARY KEY (`id`);
 
+ALTER TABLE `skinlist`
+  ADD PRIMARY KEY (`id`);
+
 
 ALTER TABLE `profiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 ALTER TABLE `questions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 ALTER TABLE `rooms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `skinlist`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
