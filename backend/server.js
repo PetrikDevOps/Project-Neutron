@@ -4,7 +4,6 @@ if (process.env.NODE_ENV !== 'production') {
 const db = require('./db');
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
 const router = express.Router();
 const functions = require('./mainfunctions');
 const session = require('express-session');
@@ -179,7 +178,7 @@ app.ws('/ws', async(ws, req) => {
 
 // Indítás \\
 
-app.listen(port, () => {
-   console.log(`Backend server is running on port ${port}`);
+app.listen(process.env.PORT || 3000, () => {
+   console.log(`Backend server is running on port ${process.env.PORT || 3000}`);
 });
 
