@@ -154,21 +154,24 @@ async function createPrivateRoom(incom) {
     }
 }
 
-async function getGameStatus(incom){
-    possibelStatus = ['Answering','Enemy_atack','waiting_for_player','waiting_for_private','in_menu']
-    let roomcheckPlayerInRoom = await db.query("SELECT * FROM rooms WHERE userIdOne = ?", [session.userIds.find(x => x.name === incom.cookies.username).id]); //Cserélni kell
+async function getLobbyStatus(incom){
+    possibelStatus = ['waiting_for_player','waiting_for_private','in_menu','korkezdes' ]
+    let roomcheckPlayerInRoom = await db.query("SELECT * FROM rooms WHERE userIdOne = ?", [session.userIds.find(x => x.name === incom.cookies.username).id]);
     if (roomcheckPlayerInRoom.length === 0) {
-        return possibelStatus[4];
+        return possibelStatus[2];
     }else{
         if (roomcheckPlayerInRoom[0].userIdTwo === null){
             if (roomcheckPlayerInRoom[0].private==1){
-                return possibelStatus[3];
+                return possibelStatus[1];
             }else{
-                return possibelStatus[2];
+                return possibelStatus[0];
             }
-        }  
+        }else{
+            return possibelStatus[4];
+        }
     }
 }
+
 
 module.exports = {
     register,
@@ -181,5 +184,5 @@ module.exports = {
     getRoomList,
     joinFixRoom,
     createPrivateRoom,
-    getGameStatus
+    getLobbyStatus
 }

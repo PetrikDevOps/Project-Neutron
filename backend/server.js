@@ -139,8 +139,6 @@ app.get('/getquestion', async (req, res) => {
     }
 });
 
-app.get('/gamestatus', async (req, res) => {
-});
 
 app.get('/stats', async (req, res) => {
     if (session.usernames.includes(req.cookies.username)){
@@ -161,14 +159,22 @@ app.get('/roomList', async (req, res) => {
 });
 
 //websocket
-/*
-app.ws('/ws', (ws, req) => {
-    ws.on('message', async (msg) => {
-        console.log(msg);
+
+app.ws('/ws', async(ws, req) => {
+    ws.on('open', async () => {
+        //A kliens csatlakozott
     });
-    ws.send('something');
+    ws.on('message', async (msg) => {
+        //A kliens üzenetet küldött
+        let loobystatus = await functions.getLobbyStatus(req);
+        tosend = JSON.stringify(loobystatus);
+        ws.send(tosend);
+    });
+    ws.on('close', async () => {
+        //A kliens lecsatlakozott
+    });
 });
-*/
+
 
 
 // Indítás \\
