@@ -108,6 +108,10 @@ app.get('/css',(req, res) => {
     res.sendFile(__dirname + '/public/style/style.css');
 });
 
+app.get('/cssg',(req, res) => {
+    res.sendFile(__dirname + '/public/style/game.css');
+});
+
 app.get('/js',(req, res) => {
     res.sendFile(__dirname + '/public/main.js');
 });
