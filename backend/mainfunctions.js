@@ -23,6 +23,8 @@ async function register(incom) {
     }
 }
 
+
+
 async function login(incom) {
     let user = incom.username;
     let pass = incom.password;
@@ -32,7 +34,8 @@ async function login(incom) {
     }
     for(let i = 0;i<result.length;i++){
         if(await argon.verify(result[i].pwhash, pass)){
-            session.userId = result[i].id;
+            let toassign = {'id' : result[i].id,name: result[i].name}
+            session.userIds.push(toassign);
             return true;
         }else{
             return false;
@@ -41,7 +44,7 @@ async function login(incom) {
 }
 
 async function createRoom(incom) {
-    let id = session.userId;
+    let id = session.userIds.find(x => x.name === incom.cookies.username).id;
     let roomIdentifier = makeid()
     // check room identifier if exists
     let roomIdfChk = await db.query("SELECT * FROM rooms WHERE identifier = ?", [roomIdentifier]);
@@ -54,7 +57,7 @@ async function createRoom(incom) {
 }
 
 async function joinRandomRoom(incom) {
-    let userid = session.userId;
+    let userid = session.userIds.find(x => x.name === incom.cookies.username).id;
     let result = await db.query("SELECT * FROM rooms WHERE userIdOne IS NOT NULL AND userIdTwo IS NULL AND private = 0");
     if (result.length === 0) {
         return createRoom(incom);
@@ -77,7 +80,7 @@ async function joinRandomRoom(incom) {
             for(let i = 0;i<result.length;i++){
                 if(!deletedrooms.includes(result[i].id)){
                     let roomId = result[i].id;
-                    session.roomId = roomId;
+                    session.roomId = roomId; //Cserélni kell
                     await db.query("UPDATE rooms SET userIdTwo = ? WHERE id = ?", [userid, roomId]);
                     return true
                 }
@@ -94,7 +97,7 @@ async function selectRandomQuestion() {
 }
 
 async function getStats() {
-    let id = session.userId;
+    let id = session.userIds.find(x => x.name === incom.cookies.username).id;
     let result = await db.query("SELECT wins, games, exp, korong FROM profiles WHERE id = ?", [id]);
     console.log(result[0]);
     return result[0];
@@ -123,8 +126,8 @@ async function getRoomList() {
 }
 
 async function joinFixRoom(incom) {
-    let userid = session.userId;
-    let tojoin = incom.roomKey;
+    let userid = session.userIds.find(x => x.name === incom.cookies.username).id;
+    let tojoin = incom.body.roomKey;
     let roomWithId = await db.query("SELECT * FROM rooms WHERE identifier = ?", [tojoin]);
     if (roomWithId.length === 0) {
         return false;
@@ -139,7 +142,7 @@ async function joinFixRoom(incom) {
 }
 
 async function createPrivateRoom(incom) {
-    let id = session.userId;
+    let id = session.userIds.find(x => x.name === incom.username).id;
     let roomIdentifier = makeid()
     // check room identifier if exists
     let roomIdfChk = await db.query("SELECT * FROM rooms WHERE identifier = ?", [roomIdentifier]);
@@ -151,7 +154,21 @@ async function createPrivateRoom(incom) {
     }
 }
 
-
+async function getGameStatus(incom){
+    possibelStatus = ['Answering','Enemy_atack','waiting_for_player','waiting_for_private','in_menu']
+    let roomcheckPlayerInRoom = await db.query("SELECT * FROM rooms WHERE userIdOne = ?", [session.userIds.find(x => x.name === incom.cookies.username).id]); //Cserélni kell
+    if (roomcheckPlayerInRoom.length === 0) {
+        return possibelStatus[4];
+    }else{
+        if (roomcheckPlayerInRoom[0].userIdTwo === null){
+            if (roomcheckPlayerInRoom[0].private==1){
+                return possibelStatus[3];
+            }else{
+                return possibelStatus[2];
+            }
+        }  
+    }
+}
 
 module.exports = {
     register,
@@ -163,5 +180,6 @@ module.exports = {
     deleteAllRoom,
     getRoomList,
     joinFixRoom,
-    createPrivateRoom
+    createPrivateRoom,
+    getGameStatus
 }
