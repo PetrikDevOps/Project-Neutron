@@ -172,6 +172,10 @@ async function getLobbyStatus(incom){
     }
 }
 
+async function checkTimeAndStats(incom){
+    let getAndId = session.userIds.find(x => x.name === incom.cookies.username).id;
+    let getRooms
+}
 
 module.exports = {
     register,

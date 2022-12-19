@@ -97,13 +97,6 @@
 {"answer":"Dollár", "correct":false},
 {"answer":"Pfund", "correct":false}
 ]},
-{"question":"Milyen készpénzfajtákat lehet Magyarországon forgalomba hozni?",
-"answers":[
-{"answer":"5,10,20,50,100, 200, 500, 1000, 2000, 5000, 10000, 20000", "correct":true},
-{"answer":"5,10,20,50,100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000", "correct":false},
-{"answer":"5,10,20,50,100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000", "correct":false},
-{"answer":"5,10,20,50,100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000", "correct":false}
-]},
 {"question":"Melyik az a bank, amelyik Magyarországon a legnagyobb hálózattal rendelkezik?",
 "answers":[
 {"answer":"OTP", "correct":true},

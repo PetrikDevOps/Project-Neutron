@@ -1,0 +1,9 @@
+waiting_for_player - vár
+
+Megkapja elsonek, h prepare - 5 sec várás
+
+Action - vár 20 secet amíg beérkezik kinek mi lesz az akciója. 
+
+kéréds kimegy - x idó választadni
+
+visszaadja mik a statok és action statuszt
