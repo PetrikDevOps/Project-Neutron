@@ -9,22 +9,26 @@ socket.addEventListener('close', function (event) {
     console.log('Connection closed');
 });
 
-
-
-let genMap = () => {
-    for (let i = 0; i < 18; i++) {
-        for (let j = 0; j < 10; j++) {
-            let canvas = document.getElementById('main-display')
-            let ctx = canvas.getContext('2d')
-            let img = document.getElementById("test");
-            ctx.drawImage(img, 100*i, 100*j, 100, 100);
-        }
+class Player {
+    constructor(name, x, y, skin, hp, sp, ad) {
+        this.name = name
+        this.x = x
+        this.y = y
+        this.skin = document.getElementById(skin)
+        this.hp = hp
+        this.sp = sp
+        this.ad = ad
+    }
+    draw(canvas) {
+        let ctx = canvas.getContext('2d')
+        ctx.drawImage(this.skin, this.x, this.y, 100, 100);
     }
 }
 
-
 let main = () => {
-    genMap()
+    let canvas = document.getElementById('main-display')
+    let player = new Player('Player', 0, 0, 'test2', 100, 100, 10)
+    player.draw(canvas)
 }
 
 main()
