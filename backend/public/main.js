@@ -32,21 +32,3 @@ let changeLobbyDisplay = (mode) => {
         profile.style.display = 'flex'
     }
 }
-
-let genMap = () => {
-    for (let i = 0; i < 18; i++) {
-        for (let j = 0; j < 10; j++) {
-            let canvas = document.getElementById('main-display')
-            let ctx = canvas.getContext('2d')
-            let img = document.getElementById("test");
-            ctx.drawImage(img, 10, 10);
-        }
-    }
-}
-
-
-let main = () => {
-    genMap()
-}
-
-main()
