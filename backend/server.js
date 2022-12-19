@@ -86,7 +86,7 @@ app.post('/join',async(req, res) => {
     }
 });
 
-app.post('newLobby', async(req, res) => {
+app.post('/newLobby', async(req, res) => {
     if (session.usernames.includes(req.cookies.username)){
         if(functions.createRoom(req)){
             res.redirect('/game');
