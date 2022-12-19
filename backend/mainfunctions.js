@@ -142,7 +142,7 @@ async function joinFixRoom(incom) {
 }
 
 async function createPrivateRoom(incom) {
-    let id = session.userIds.find(x => x.name === incom.username).id;
+    let id = session.userIds.find(x => x.name === incom.cookies.username).id;
     let roomIdentifier = makeid()
     // check room identifier if exists
     let roomIdfChk = await db.query("SELECT * FROM rooms WHERE identifier = ?", [roomIdentifier]);

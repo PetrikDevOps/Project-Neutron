@@ -9,7 +9,7 @@ const router = express.Router();
 const functions = require('./mainfunctions');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const e = require('express');
+const expressWs = require('express-ws')(app);
 
 session.usernames= [];
 session.userIds = [];
@@ -88,8 +88,14 @@ app.post('/join',async(req, res) => {
 
 app.post('/newLobby', async(req, res) => {
     if (session.usernames.includes(req.cookies.username)){
-        if(functions.createRoom(req)){
-            res.redirect('/game');
+        if(req.body.priv){
+            if(functions.createPrivateRoom(req)){
+                res.redirect('/game');
+            }
+        }else{
+            if(functions.createRoom(req)){
+                res.redirect('/game');
+            }
         }
     }else{
         res.redirect('/');
@@ -114,6 +120,9 @@ app.get('/soruce',(req, res) => {
     res.sendFile(__dirname + '/public/sources/'+req.query.src);
 });
 
+app.get('/probajs',(req, res) => {
+    res.sendFile(__dirname + '/public/proba.js');
+});
 
     //\
    // \\
@@ -150,6 +159,17 @@ app.get('/roomList', async (req, res) => {
         res.redirect('/');
     }
 });
+
+//websocket
+/*
+app.ws('/ws', (ws, req) => {
+    ws.on('message', async (msg) => {
+        console.log(msg);
+    });
+    ws.send('something');
+});
+*/
+
 
 // Indítás \\
 
