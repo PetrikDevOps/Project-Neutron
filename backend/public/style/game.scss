@@ -60,17 +60,19 @@
 .válasz{
     
     text-align: center;
-    border: 10px dashed rgb(187, 121, 51);
+    border: 10px dashed rgba(187, 121, 51, 0.917);
     background-color: rgba(82, 35, 12, 0.544);
     padding: 1vh;
     border-radius: 2vh;
     margin: 1vh;
     transition: 0.2s;
-    font-size: 2vh;
+    font-size: 3vh;
+    padding: 2vh;
+    
 
     &:hover{
         background-color: rgba(160, 85, 47, 0.944);
-        border: 10px dashed rgba(193, 142, 88, 0.947);
+        border: 10px dashed rgb(187, 121, 51);
     }
     
 }

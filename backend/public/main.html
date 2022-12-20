@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hun">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,18 +9,21 @@
     <title>Project-Neutron</title>
 </head>
 <body>
-    <img id="test" src="http://localhost:3000/soruce?src=skins/karakter1.png" alt="">
-    <img id="test2" src="http://localhost:3000/soruce?src=skins/karakter2.png" alt="">
+    <div id="test">
+        <img id="karakter1.png" src="http://localhost:3000/soruce?src=skins/karakter1.png" alt="">
+        <img id="karakter2.png" src="http://localhost:3000/soruce?src=skins/karakter2.png" alt="">
+        <img id="karakter3.png" src="http://localhost:3000/soruce?src=skins/karakter3.png" alt="">
+    </div>
     <div id="bg"></div>
     <canvas id="main-display" width="1800" height="1000"></canvas>
     <div id="kérdés-cont">   
         <div id="cont">
             <p id="kérdés"></p>
             <div id="válaszok">
-                <div class="válasz" id="válasz0" class="cursor-pointer"></div>
-                <div class="válasz" id="válasz1" class="cursor-pointer"></div>
-                <div class="válasz" id="válasz2" class="cursor-pointer"></div>
-                <div class="válasz" id="válasz3" class="cursor-pointer"></div>
+                <div class="válasz" id="válasz0" onclick="butPres(0)" class="cursor-pointer"></div>
+                <div class="válasz" id="válasz1" onclick="butPres(1)" class="cursor-pointer"></div>
+                <div class="válasz" id="válasz2" onclick="butPres(2)" class="cursor-pointer"></div>
+                <div class="válasz" id="válasz3" onclick="butPres(3)" class="cursor-pointer"></div>
             </div>
         </div>
     </div>

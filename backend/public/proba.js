@@ -1,40 +1,23 @@
-const socket = new WebSocket('ws://localhost:3000/ws');
-
-socket.addEventListener('open', function (event) {
-    socket.send('Client connected');
-});
-socket.addEventListener('message', function (event) {
-    let realmsg = JSON.parse(event.data)
-    if(realmsg.status == 'waiting_for_player'){
-        setTimeout(checkStatus, 1000);
-        console.log('Waiting for player');
-    }else if(realmsg.status == 'prepare'){
+class Player {
+    constructor( x, y, skin, hp, sp, ad) {
+        this.x = x
+        this.y = y
+        this.skin = document.getElementById(skin)
+        this.hp = hp
+        this.sp = sp
     }
-});
-socket.addEventListener('close', function (event) {
-    console.log('Connection closed');
-});
-
-function checkStatus(){
-    socket.send('checkStatus');
+    draw(canvas) {
+        let ctx = canvas.getContext('2d')
+        ctx.drawImage(this.skin, this.x, this.y, 200, 200);
+    }
+    drawHP(canvas) {
+        let ctx = canvas.getContext('2d')
+        ctx.fillStyle = "rgb(0, 0, 0, 1)";
+        ctx.fillRect(this.x, this.y - 50, 7 * 30, 20);
+        ctx.fillStyle = "rgb(255, 0, 0, 0.7)";
+        ctx.fillRect(this.x, this.y - 50, this.hp * 30, 20);
+    }
 }
-
-
-//Preisler Hülyesége
-
-
-let que = [
-    {
-        'kérdés': 'Melyik a legjobb?',
-        'válaszok': ['A', 'B', 'C', 'D'],
-        'id': 1
-    },
-    {
-        'kérdés': 'Melyik alma?',
-        'válaszok': ['A', 'B', 'C', 'D'],
-        'id': 2
-    },
-]
 
 class Kérdés {
     constructor(question, answers, id) {
@@ -50,32 +33,56 @@ class Kérdés {
     }
 }
 
-class Player {
-    constructor(name, x, y, skin, hp, sp, ad) {
-        this.name = name
-        this.x = x
-        this.y = y
-        this.skin = document.getElementById(skin)
-        this.hp = hp
-        this.sp = sp
-        this.ad = ad
+let players_list = [];
+let canvas = document.getElementById('main-display')
+let action = 0
+
+const socket = new WebSocket('ws://localhost:3000/ws');
+
+socket.addEventListener('open', async function (event) {
+    socket.send('Client connected');
+});
+socket.addEventListener('message', async function (event) {
+    let realmsg = JSON.parse(event.data)
+    console.log(realmsg);
+    if(realmsg.status == 'waiting_for_player'){
+        setTimeout(checkStatus, 1000);
+        console.log('Waiting for player');
+    }else if(realmsg.status == 'prepare'){
+        players_list.push(new Player(1500, 800, realmsg.userDatas.client.skin, realmsg.userDatas.client.hp, realmsg.userDatas.client.sp));
+        players_list.push(new Player(100, 800, realmsg.userDatas.enemy.skin, realmsg.userDatas.enemy.hp, realmsg.userDatas.enemy.sp));
+        displayPlayers(players_list)
+        socket.send('info_received');
+    }else if(realmsg.status == 'wait_for_action'){
+        let q = new Kérdés('Mit szeretnél csinálni', ['Támadás', 'Védekezés', 'Heal', 'Tanulás'], 1)
+        q.disply()
+        setTimeout(endPhase, 19000);
+
+    }else if(realmsg.status == 'wait_for_question'){
+        let q = new Kérdés(realmsg.question, realmsg.answers, realmsg.id)
+        q.disply()
+        setTimeout(endPhase, 19000);
     }
-    draw(canvas) {
-        let ctx = canvas.getContext('2d')
-        ctx.drawImage(this.skin, this.x, this.y, 200, 200);
-    }
+});
+socket.addEventListener('close', async function (event) {
+    console.log('Connection closed');
+});
+
+function checkStatus(){
+    socket.send('checkStatus');
 }
 
-let main = () => {
-    let canvas = document.getElementById('main-display')
-    let player = new Player('Player', 100, 800, 'test2', 400, 400, 10)
-    let player2 = new Player('Player2', 1500, 800, 'test', 400, 400, 10)
-    let kérdés = new Kérdés(que[0].kérdés, que[0].válaszok, que[0].id)
-    console.log(kérdés);
-    player.draw(canvas)
-    player2.draw(canvas)
-    kérdés.disply()
-
+let butPres = (n) =>{
+    action = n
 }
 
-main()
+let endPhase = () =>{
+    socket.send('endAct: ' + action);
+}
+
+let displayPlayers = (list) => {
+    for (let i = 0; i < list.length; i++) {
+        list[i].draw(canvas)
+        list[i].drawHP(canvas)
+    }
+}

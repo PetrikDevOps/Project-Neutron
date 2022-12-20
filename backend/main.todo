@@ -1,8 +1,29 @@
 waiting_for_player - vár
 
 Megkapja elsonek, h prepare - 5 sec várás
+és elküldi az adatopkat
+{
+    status: 'prepare'
+    player1: {
+        skin: skin(src)
+        hp: hp
+        sp: sp
+    }
+    player2: {
+        skin: skin(src)
+        hp: hp
+        sp: sp
+    }
+}
+erre érkezik a válasz hogy 'info_received'
+
 
 Action - vár 20 secet amíg beérkezik kinek mi lesz az akciója. 
+    Actions:
+        0 Támadás
+        1 Védekezés
+        2 Heal 
+        3 Tanulás
 
 kéréds kimegy - x idó választadni
 

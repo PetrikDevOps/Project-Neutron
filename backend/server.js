@@ -175,7 +175,8 @@ app.ws('/ws', async(ws, req) => {
                 break;
             case 'korkezdes':
                 let reamingTime = await functions.checkTime(req);
-                ws.send(JSON.stringify({status: 'prepare', time: reamingTime}));
+                let datas = await functions.getSkinHpSp(req);
+                ws.send(JSON.stringify({status: 'prepare', time: reamingTime, userDatas: datas}));
                 break;
         }
     });
