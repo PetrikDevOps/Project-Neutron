@@ -185,6 +185,11 @@ app.ws('/ws', async(ws, req) => {
     });
 });
 
+//Game states: 1 - prepare, 2 - actionchoosing, 3 - quetioning, 4 - result
+setInterval(() => {
+    console.log('Timer');
+    functions.timer();
+}, 1000);
 
 
 // Indítás \\

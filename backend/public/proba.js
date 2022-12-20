@@ -20,16 +20,21 @@ class Player {
 }
 
 class Kérdés {
-    constructor(question, answers, id) {
+    constructor(question, answers) {
         this.question = question
         this.answers = answers
-        this.id = id
     }
     disply() {
         document.getElementById('kérdés').innerHTML = this.question
         for (let i = 0; i < this.answers.length; i++) {
             document.getElementById('válasz' + i).innerHTML = this.answers[i]
         }
+    }
+    colorIt(n, color) {
+        for (let i = 0; i < 4; i++) {
+            document.getElementById('válasz' + i).style.color = 'red'
+        }
+        document.getElementById('válasz' + n).style.color = color
     }
 }
 
@@ -44,24 +49,42 @@ socket.addEventListener('open', async function (event) {
 });
 socket.addEventListener('message', async function (event) {
     let realmsg = JSON.parse(event.data)
-    console.log(realmsg);
+
+
+
     if(realmsg.status == 'waiting_for_player'){
+        //server újra küldi a status-t
         setTimeout(checkStatus, 1000);
         console.log('Waiting for player');
+        //kliens nem add vissza semmit
     }else if(realmsg.status == 'prepare'){
+        //server vissza add egy {userDatas: {client: {skin: 'skin1', hp: 7, sp: 0s}, enemy: {skin: 'skin2', hp: 7, sp: 0}}}
         players_list.push(new Player(1500, 800, realmsg.userDatas.client.skin, realmsg.userDatas.client.hp, realmsg.userDatas.client.sp));
         players_list.push(new Player(100, 800, realmsg.userDatas.enemy.skin, realmsg.userDatas.enemy.hp, realmsg.userDatas.enemy.sp));
         displayPlayers(players_list)
-        socket.send('info_received');
+        //kliens nem add vissza semmit
     }else if(realmsg.status == 'wait_for_action'){
-        let q = new Kérdés('Mit szeretnél csinálni', ['Támadás', 'Védekezés', 'Heal', 'Tanulás'], 1)
+        //szerver vár!
+        let q = new Kérdés('Mit szeretnél csinálni', ['Támadás', 'Védekezés', 'Heal', 'Tanulás'])
         q.disply()
-        setTimeout(endPhase, 19000);
-
+        setTimeout(endPhase, 9000);
+        //kliens vissza add egy {action: 0-3}
     }else if(realmsg.status == 'wait_for_question'){
-        let q = new Kérdés(realmsg.question, realmsg.answers, realmsg.id)
+        //server vissza add egy {question: kérdés, answers: [válasz1, válasz2, válasz3, válasz4]}
+        let q = new Kérdés(realmsg.question, realmsg.answers)
         q.disply()
         setTimeout(endPhase, 19000);
+        //kliens vissza add egy {action: 0-3}
+    }else if(realmsg.status == 'result'){
+        //server vissza add egy {question: kérdés, answers: [válasz1, válasz2, válasz3, válasz4], correct: helyes válasz indexe}
+        let q = new Kérdés('Kérdésre a helyes válasz: ', realmsg.answers)
+        q.disply()
+        q.colorIt(realmsg.correct, 'green')
+        //kliens nem add vissza semmit
+    }else if(realmsg.status == 'end'){
+        //server vissza add egy {winner: győztes neve}
+        alert('End!!\n' + realmsg.winner + ' nyert!');
+        //kliens nem add vissza semmit
     }
 });
 socket.addEventListener('close', async function (event) {

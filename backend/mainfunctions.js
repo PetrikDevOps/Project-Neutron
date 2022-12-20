@@ -80,8 +80,8 @@ async function joinRandomRoom(incom) {
             for(let i = 0;i<result.length;i++){
                 if(!deletedrooms.includes(result[i].id)){
                     let roomId = result[i].id;
-                    session.roomId = roomId; //Cserélni kell
                     await db.query("UPDATE rooms SET userIdTwo = ?, gameState = 1 WHERE id = ?", [userid, roomId]).catch((err) => {console.log(err);})
+                    enableRoom(incom);
                     return true
                 }
             }
@@ -133,6 +133,7 @@ async function joinFixRoom(incom) {
     }else{
         if (roomWithId[0].userIdTwo == null) {
             await db.query("UPDATE rooms SET userIdTwo = ?, gameState = 1 WHERE identifier = ?", [userid, tojoin]).catch((err) => {console.log(err);})
+            enableRoom(incom);
             return true;
         }else{
             return false;
@@ -172,23 +173,9 @@ async function getLobbyStatus(incom){
 }
 
 async function checkTime(incom){
-    let getAndId = session.userIds.find(x => x.name === incom.cookies.username).id;
-    let getRoom = await db.query("SELECT * FROM rooms WHERE userIdOne = ? OR userIdTwo = ?", [getAndId,getAndId]).catch((err) => {console.log(err);})
-    if (getRoom.length === 0) {
-        return false;
-    }else{
-        let getTime = getRoom[0].timer;
-        if (getTime === null) {
-            await db.query("UPDATE rooms SET timer = ? WHERE id = ? ", [5, getRoom[0].id]).catch((err) => {console.log(err);})
-            return 5
-        }else if(getTime == 0){
-            await db.query("UPDATE rooms SET timer = ? WHERE id = ? ", [20, getRoom[0].id]).catch((err) => {console.log(err);})
-            return 20
-        }
-        else{
-            return getTime
-        }
-    }
+    let id = session.userIds.find(x => x.name === incom.cookies.username).id;
+    let room = await db.query("SELECT * FROM rooms WHERE userIdOne = ? OR userIdTwo = ?", [id,id]).catch((err) => {console.log(err);})
+    return room[0].timer;
 }
 
 
@@ -238,6 +225,37 @@ async function getSkinHpSp(incom){
     }
 }
 
+async function enableRoom(incom){
+    let id = session.userIds.find(x => x.name === incom.cookies.username).id;
+    let room = await db.query("SELECT * FROM rooms WHERE userIdOne = ? OR userIdTwo = ?", [id,id]).catch((err) => {console.log(err);})
+    await db.query("UPDATE rooms SET gameState = 1 WHERE id = ?", [room[0].id]).catch((err) => {console.log(err);})
+}
+
+//Game states: 1 - prepare, 2 - actionchoosing, 3 - quetioning, 4 - result
+
+async function timer(){
+    let allRoom = await db.query("SELECT * FROM rooms WHERE gameState IS NOT NULL")
+    for (let i = 0; i < allRoom.length; i++) {
+        if (allRoom[i].timer > 0) {
+            await db.query("UPDATE rooms SET timer = ? WHERE id = ?", [allRoom[i].timer-1,allRoom[i].id])
+        }else{
+           if(allRoom[i].gameState == 1){
+               await db.query("UPDATE rooms SET gameState = 2 WHERE id = ?", [allRoom[i].id])
+               await db.query("UPDATE rooms SET timer = 5 WHERE id = ?", [allRoom[i].id])
+            }else if(allRoom[i].gameState == 2){
+                await db.query("UPDATE rooms SET gameState = 3 WHERE id = ?", [allRoom[i].id])
+                await db.query("UPDATE rooms SET timer = 10 WHERE id = ?", [allRoom[i].id])
+            }else if(allRoom[i].gameState == 3){
+                await db.query("UPDATE rooms SET gameState = 4 WHERE id = ?", [allRoom[i].id])
+                await db.query("UPDATE rooms SET timer = 20 WHERE id = ?", [allRoom[i].id])
+            }else if(allRoom[i].gameState == 4){
+                await db.query("UPDATE rooms SET gameState = 2 WHERE id = ?", [allRoom[i].id])
+                await db.query("UPDATE rooms SET timer = 5 WHERE id = ?", [allRoom[i].id])
+            }
+        }
+    }
+}
+
 
 module.exports = {
     register,
@@ -252,5 +270,6 @@ module.exports = {
     createPrivateRoom,
     getLobbyStatus,
     checkTime,
-    getSkinHpSp
+    getSkinHpSp,
+    timer
 }
