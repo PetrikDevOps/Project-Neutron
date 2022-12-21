@@ -198,6 +198,7 @@ app.ws('/ws', async(ws, req) => {
                             let q = functions.selectRandomQuestion();
                             ws.send(JSON.stringify({status: 'wait_for_question', question: q}));
                             functions.setAction(req, msg);
+                            
                         }
                         //Védekezés
                         break;
