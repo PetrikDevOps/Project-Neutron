@@ -10,29 +10,34 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `project-neutron` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `project-neutron`;
 
-CREATE TABLE `profiles` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `profiles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `email` varchar(256) NOT NULL,
   `pwhash` varchar(512) NOT NULL,
   `wins` int(11) NOT NULL DEFAULT 0,
   `games` int(11) DEFAULT 0,
   `exp` int(11) DEFAULT 0,
-  `korong` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `korong` int(11) DEFAULT 0,
+  `skin` int(11) NOT NULL DEFAULT 1,
+  `active_hp` int(11) DEFAULT NULL,
+  `active_knoweladge` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`,`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `profiles` (`id`, `name`, `email`, `pwhash`, `wins`, `games`, `exp`, `korong`) VALUES
-(1, 'Bagaci', 'Bagaci@bagamail.com', '$argon2id$v=19$m=65536,t=3,p=4$tukFeTQjxB1T4gGurUNFug$8P3S/GI4OIYPvx3k6vWiLxXPkEDpU/a4qycv6m8gbtU', 0, 0, 0, 0),
-(2, 'admin', 'adminmail@mail.com', '$argon2id$v=19$m=65536,t=3,p=4$Uv+24TqKcltmuTPR9Yiyqg$0Smzvw1bJg+ebsWk2gfMPS+9RStTfaERaw2k4bsukdc', 0, 0, 0, 0),
-(5, 'lol', 'adminmail@mail.con', '$argon2id$v=19$m=65536,t=3,p=4$h0sZ9To0/VPy88KC++Zu5g$SMvPxXpPgy0qDYa7BtuYdKoQki7ECAK4l9FOm/GrzKM', 0, 0, 0, 0),
-(6, 'bagci', 'bagci', '$argon2id$v=19$m=65536,t=3,p=4$vh1mq41VoLYdalZAjsESDQ$OTyccq4ctTqm2RDKVhBosZ7Ed2Il1BJM5CMOYYVZPO4', 0, 0, 0, 0);
+INSERT INTO `profiles` (`id`, `name`, `email`, `pwhash`, `wins`, `games`, `exp`, `korong`, `skin`, `active_hp`, `active_knoweladge`) VALUES
+(1, 'Bagaci', 'Bagaci@bagamail.com', '$argon2id$v=19$m=65536,t=3,p=4$tukFeTQjxB1T4gGurUNFug$8P3S/GI4OIYPvx3k6vWiLxXPkEDpU/a4qycv6m8gbtU', 0, 0, 0, 0, 1, 7, 1),
+(2, 'admin', 'adminmail@mail.com', '$argon2id$v=19$m=65536,t=3,p=4$Uv+24TqKcltmuTPR9Yiyqg$0Smzvw1bJg+ebsWk2gfMPS+9RStTfaERaw2k4bsukdc', 0, 0, 0, 0, 2, 7, 1),
+(5, 'lol', 'adminmail@mail.con', '$argon2id$v=19$m=65536,t=3,p=4$h0sZ9To0/VPy88KC++Zu5g$SMvPxXpPgy0qDYa7BtuYdKoQki7ECAK4l9FOm/GrzKM', 0, 0, 0, 0, 1, 7, 1),
+(6, 'bagci', 'bagci', '$argon2id$v=19$m=65536,t=3,p=4$vh1mq41VoLYdalZAjsESDQ$OTyccq4ctTqm2RDKVhBosZ7Ed2Il1BJM5CMOYYVZPO4', 0, 0, 0, 0, 1, 7, 1);
 
-CREATE TABLE `questions` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `questions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `question` varchar(256) NOT NULL,
   `answers` varchar(5000) NOT NULL,
-  `correct` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `correct` int(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `questions` (`id`, `question`, `answers`, `correct`) VALUES
 (33, 'Melyik következő kifejezés nem egy adatbázis-kezelő rendszer neve?', 'MySQL,Excel,Oracle,Microsoft Access', 2),
@@ -71,8 +76,8 @@ INSERT INTO `questions` (`id`, `question`, `answers`, `correct`) VALUES
 (66, 'Melyik a legnépszerűbb szórakozási forma Magyarországon?', 'Könyvek olvasása,Mozizás,Kertészkedés,tévézés', 3),
 (67, 'Milyen épületekben találhatóak az általában a mozik?', 'Könyvtárakban,Múzeumokban,Bevásárlólözpontokban,Iskolákban', 2);
 
-CREATE TABLE `rooms` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `rooms` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `userIdOne` int(11) DEFAULT NULL,
   `userIdTwo` int(11) DEFAULT NULL,
   `gameState` int(11) DEFAULT NULL,
@@ -80,39 +85,24 @@ CREATE TABLE `rooms` (
   `private` tinyint(1) NOT NULL DEFAULT 0,
   `timer` int(11) DEFAULT NULL,
   `actionOne˛` varchar(126) DEFAULT NULL,
-  `actionTwo` varchar(126) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `actionTwo` varchar(126) DEFAULT NULL,
+  `questionId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `skinlist` (
-  `id` int(11) NOT NULL,
-  `skinSrc` varchar(126) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `rooms` (`id`, `userIdOne`, `userIdTwo`, `gameState`, `identifier`, `private`, `timer`, `actionOne˛`, `actionTwo`, `questionId`) VALUES
+(29, 2, 6, 3, 'CA632', 0, 10, NULL, NULL, 58);
 
+CREATE TABLE IF NOT EXISTS `skinlist` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `skinSrc` varchar(126) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-ALTER TABLE `profiles`
-  ADD PRIMARY KEY (`id`,`name`);
-
-ALTER TABLE `questions`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `rooms`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `skinlist`
-  ADD PRIMARY KEY (`id`);
-
-
-ALTER TABLE `profiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
-ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
-
-ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `skinlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+INSERT INTO `skinlist` (`id`, `skinSrc`) VALUES
+(1, 'karakter1.png'),
+(2, 'karakter2.png'),
+(3, 'karakter3.png');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
