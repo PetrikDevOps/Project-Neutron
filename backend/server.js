@@ -174,9 +174,86 @@ app.ws('/ws', async(ws, req) => {
                 ws.send(JSON.stringify({status: 'waiting_for_player'}));
                 break;
             case 'korkezdes':
+                let realgamestate = await functions.checkRealGameState(req);
                 let reamingTime = await functions.checkTime(req);
                 let datas = await functions.getSkinHpSp(req);
-                ws.send(JSON.stringify({status: 'prepare', time: reamingTime, userDatas: datas}));
+                if(realgamestate==1){
+                    ws.send(JSON.stringify({status: 'prepare', time: reamingTime, userDatas: datas}));
+                }
+                if(realgamestate==2){
+                    ws.send(JSON.stringify({status: 'wait_for_action'}));
+                }
+                realmsg = JSON.parse(msg);
+                switch(realmsg.action){ 
+                    case '0':
+                        if(await functions.checkGameState(req, 0)){
+                            let q = functions.selectRandomQuestion();
+                            ws.send(JSON.stringify({status: 'wait_for_question', question: q}));
+                            functions.setAction(req, msg);
+                        }
+                        //Támadás
+                        break;
+                    case '1':
+                        if(await functions.checkGameState(req, 1)){
+                            let q = functions.selectRandomQuestion();
+                            ws.send(JSON.stringify({status: 'wait_for_question', question: q}));
+                            functions.setAction(req, msg);
+                        }
+                        //Védekezés
+                        break;
+                    case '2':
+                        if (await functions.checkGameState(req, 2)){
+                            let q = functions.selectRandomQuestion();
+                            ws.send(JSON.stringify({status: 'wait_for_question', question: q}));
+                            functions.setAction(req, msg);
+                        }
+                        //Heal
+                        break;
+                    case '3':
+                        if(await functions.checkGameState(req, 3)){
+                            let q = functions.selectRandomQuestion();
+                            ws.send(JSON.stringify({status: 'wait_for_question', question: q}));
+                        }
+                        //Tanulás
+                        break;
+                    case '4':
+                        if(await functions.checkGameState(req, 4)){
+                            if(await functions.checkAnswer(req, 0)){
+                                ws.send(JSON.stringify({status: 'result', answers: ['válasz1', 'válasz2', 'válasz3', 'válasz4'], correct: 0}));
+                                doAction();
+                            }   
+                        }
+                        //válasz v1
+                        break;
+                    case '5':
+                        if(await functions.checkGameState(req, 5)){
+                            if(await functions.checkAnswer(req, 1)){
+                                ws.send(JSON.stringify({status: 'result', answers: ['válasz1', 'válasz2', 'válasz3', 'válasz4'], correct: 1}));
+                                doAction();
+                            }
+                        }
+                        //válasz v2
+                        break;
+                    case '6':
+                        if(await functions.checkGameState(req, 6)){
+                            if(await functions.checkAnswer(req, 2)){
+                                ws.send(JSON.stringify({status: 'result', answers: ['válasz1', 'válasz2', 'válasz3', 'válasz4'], correct: 2}));
+                                doAction();
+                            }
+                        }
+                        //válasz v3
+                        break;
+                    case '7':
+                        if(await functions.checkGameState(req, 7)){
+                            if(await functions.checkAnswer(req, 3)){
+                                ws.send(JSON.stringify({status: 'result', answers: ['válasz1', 'válasz2', 'válasz3', 'válasz4'], correct: 3}));
+                                doAction();
+                            }
+                        }
+                        //válasz v4
+                        break;
+
+                }  
                 break;
         }
     });

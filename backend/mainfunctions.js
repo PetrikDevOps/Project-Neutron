@@ -89,11 +89,10 @@ async function joinRandomRoom(incom) {
     }
 }
 
-async function selectRandomQuestion() {
-    let result = await db.query("SELECT * FROM questions ORDER BY RAND() LIMIT 1").catch((err) => {console.log(err);})
-    let question = result[0].question;
-    let answer = result[0].answers.split(',');
-    return [question, answer, result[0].id];
+async function getMyQuestion(incom) {
+    let id = session.userIds.find(x => x.name === incom.cookies.username).id;
+    let result = await db.query("SELECT questions.question, questions.answers FROM questions INNER JOIN rooms ON rooms.questionId = questions.id WHERE rooms.userIdOne = ? OR rooms.userIdTwo =?", [id,id]).catch((err) => {console.log(err);})
+    return result[0].question;
 }
 
 async function getStats() {
@@ -103,6 +102,7 @@ async function getStats() {
 }
 
 async function alertEnemyDc(enemyId) {
+
 }
 
 function makeid() {
@@ -192,13 +192,11 @@ async function getSkinHpSp(incom){
         if(id == playerOneId){
             let j = {
                 client:{
-                    name: playerOneActiveData[0].name,
                     skin: playerOneActiveData[0].skinSrc,
                     hp: playerOneActiveData[0].active_hp,
                     sp: playerOneActiveData[0].active_knoweladge
                 },
                 enemy:{
-                    name: playerTwoActiveData[0].name,
                     skin: playerTwoActiveData[0].skinSrc,
                     hp: playerTwoActiveData[0].active_hp,
                     sp: playerTwoActiveData[0].active_knoweladge
@@ -208,7 +206,6 @@ async function getSkinHpSp(incom){
         }else{
             let j = {
                 client:{
-                    name: playerTwoActiveData[0].name,
                     skin: playerTwoActiveData[0].skinSrc,
                     hp: playerTwoActiveData[0].active_hp,
                     sp: playerTwoActiveData[0].active_knoweladge
@@ -232,7 +229,6 @@ async function enableRoom(incom){
 }
 
 //Game states: 1 - prepare, 2 - actionchoosing, 3 - quetioning, 4 - result
-
 async function timer(){
     let allRoom = await db.query("SELECT * FROM rooms WHERE gameState IS NOT NULL")
     for (let i = 0; i < allRoom.length; i++) {
@@ -241,18 +237,84 @@ async function timer(){
         }else{
            if(allRoom[i].gameState == 1){
                await db.query("UPDATE rooms SET gameState = 2 WHERE id = ?", [allRoom[i].id])
-               await db.query("UPDATE rooms SET timer = 5 WHERE id = ?", [allRoom[i].id])
+               await db.query("UPDATE rooms SET timer = 10 WHERE id = ?", [allRoom[i].id])
             }else if(allRoom[i].gameState == 2){
                 await db.query("UPDATE rooms SET gameState = 3 WHERE id = ?", [allRoom[i].id])
-                await db.query("UPDATE rooms SET timer = 10 WHERE id = ?", [allRoom[i].id])
-            }else if(allRoom[i].gameState == 3){
-                await db.query("UPDATE rooms SET gameState = 4 WHERE id = ?", [allRoom[i].id])
                 await db.query("UPDATE rooms SET timer = 20 WHERE id = ?", [allRoom[i].id])
+                //set random question to that room
+                let question = await db.query("SELECT * FROM questions ORDER BY RAND() LIMIT 1")
+                await db.query("UPDATE rooms SET questionId = ? WHERE id = ?", [question[0].id,allRoom[i].id])
+            }else if(allRoom[i].gameState == 3){
+                
+                await db.query("UPDATE rooms SET gameState = 4 WHERE id = ?", [allRoom[i].id])
+                await db.query("UPDATE rooms SET timer = 5 WHERE id = ?", [allRoom[i].id])
             }else if(allRoom[i].gameState == 4){
                 await db.query("UPDATE rooms SET gameState = 2 WHERE id = ?", [allRoom[i].id])
                 await db.query("UPDATE rooms SET timer = 5 WHERE id = ?", [allRoom[i].id])
             }
         }
+    }
+}
+
+async function Attack(enemy){
+    enemy.hp = enemy.hp - 2;
+    return enemy;
+}
+async function Heal(user){
+    user.hp = user.hp + 1;
+    return user;
+}
+async function Defend(user, enemy){
+    if(enemy.action == 0){
+        enemy.hp = enemy.hp - 1;
+    }
+    return enemy;
+}
+async function Learn(user){
+    user.sp = user.sp + 1;
+    return user;
+}
+
+async function checkGameState(incom, state){
+    let id = session.userIds.find(x => x.name === incom.cookies.username).id;
+    let room = await db.query("SELECT * FROM rooms WHERE userIdOne = ? OR userIdTwo = ?", [id,id]).catch((err) => {console.log(err);})
+    let roomState = room[0].gameState;
+    if (roomState  == 2 && state < 4) {
+        return true;
+    }else if(roomState == 3 && (state >=4 && state < 8)){
+        return true;
+    }else{
+        return false;
+    }
+    
+}
+
+async function checkRealGameState(incom){
+    let playerid = session.userIds.find(x => x.name === incom.cookies.username).id;
+    let room = await db.query("SELECT * FROM rooms WHERE userIdOne = ? OR userIdTwo = ?", [playerid,playerid]).catch((err) => {console.log(err);})
+    return room[0].gameState;
+}
+
+async function setAction(incom,msg){
+    msgs = JSON.parse(msg);
+    let id = session.userIds.find(x => x.name === incom.cookies.username).id;
+    let room = await db.query("SELECT * FROM rooms WHERE userIdOne = ? OR userIdTwo = ?", [id,id]).catch((err) => {console.log(err);})
+    if (room[0].userIdOne == id) {
+        await db.query("UPDATE rooms SET actionOne = ? WHERE id = ?", [msg.action,room[0].id]).catch((err) => {console.log(err);})
+    }else{
+        await db.query("UPDATE rooms SET actionTwo = ? WHERE id = ?", [msg.action,room[0].id]).catch((err) => {console.log(err);})
+    }
+}
+
+async function checkAnswer(incom, user_answer){
+    let id = session.userIds.find(x => x.name === incom.cookies.username).id;
+    let room = await db.query("SELECT * FROM rooms WHERE userIdOne = ? OR userIdTwo = ?", [id,id]).catch((err) => {console.log(err);})
+    let question = await db.query("SELECT * FROM questions WHERE id = ?", [room[0].questionId]).catch((err) => {console.log(err);})
+    let answer = question[0].correct;
+    if (user_answer == answer) {
+        return true;
+    }else{
+        return false;
     }
 }
 
@@ -262,7 +324,7 @@ module.exports = {
     login,
     createRoom,
     joinRandomRoom,
-    selectRandomQuestion,
+    getMyQuestion,
     getStats,
     deleteAllRoom,
     getRoomList,
@@ -271,5 +333,9 @@ module.exports = {
     getLobbyStatus,
     checkTime,
     getSkinHpSp,
-    timer
+    timer,
+    checkGameState,
+    setAction,
+    checkAnswer,
+    checkRealGameState
 }

@@ -26,5 +26,14 @@ Action - vár 20 secet amíg beérkezik kinek mi lesz az akciója.
         3 Tanulás
 
 kéréds kimegy - x idó választadni
+vissza jön rá egy válasz
+{action: 4-7}
 
+
+ezek után a szerver checkeli a helye válaszokat
+és vissza küldi a kliensnek hogy ki tudja szinezni
+{correct: 0-3, answers: []}
+
+
+ezek után végre hajtja  a változtatásokat
 visszaadja mik a statok és action statuszt

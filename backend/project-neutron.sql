@@ -77,7 +77,10 @@ CREATE TABLE `rooms` (
   `userIdTwo` int(11) DEFAULT NULL,
   `gameState` int(11) DEFAULT NULL,
   `identifier` varchar(5) NOT NULL,
-  `private` tinyint(1) NOT NULL DEFAULT 0
+  `private` tinyint(1) NOT NULL DEFAULT 0,
+  `timer` int(11) DEFAULT NULL,
+  `actionOne˛` varchar(126) DEFAULT NULL,
+  `actionTwo` varchar(126) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `skinlist` (
